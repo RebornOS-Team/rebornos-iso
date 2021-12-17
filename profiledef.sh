@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="archlinux"
-iso_label="ARCH_$(date +%Y%m)"
-iso_publisher="Arch Linux <https://archlinux.org>"
-iso_application="Arch Linux Live/Rescue CD"
+iso_name="rebornos_labs"
+iso_label="ROSL_$(date +%Y%m)"
+iso_publisher="RebornOS <https://www.rebornos.org>"
+iso_application="RebornOS Live/Rescue ISO"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
