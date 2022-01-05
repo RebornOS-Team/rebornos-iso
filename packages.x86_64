@@ -1,3 +1,5 @@
+# ArchISO
+# =======
 alsa-utils
 amd-ucode
 arch-install-scripts
@@ -109,7 +111,7 @@ usb_modeswitch
 usbmuxd
 usbutils
 vim
-virtualbox-guest-utils-nox
+# virtualbox-guest-utils-nox
 vpnc
 wireless-regdb
 wireless_tools
@@ -118,3 +120,42 @@ wvdial
 xfsprogs
 xl2tpd
 zsh
+
+# VM
+# ==
+virtualbox-guest-utils
+
+# Calamares
+# =========
+qt5-location 
+qt5-svg
+qt5-tools
+qt5-webengine
+qt5-xmlpatterns         
+qt5ct
+polkit-qt5         
+kconfig
+kcoreaddons
+kdbusaddons
+ki18n    
+kpackage
+kparts     
+kpmcore        
+boost
+boost-libs
+libatasmart
+libpwquality
+parted  
+plasma-framework 
+solid       
+udisks2 
+yaml-cpp
+polkit               
+calamares-configuration
+calamares-branding
+
+# GUI
+# ===
+
+# Repair
+# ======
