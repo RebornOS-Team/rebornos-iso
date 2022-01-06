@@ -170,8 +170,8 @@ xorg-drivers
 dkms
 
 # Hardware - Other
-==================
-xf86-input-mtrack-git # Macbook multitouch support
+# ================
+# xf86-input-mtrack-git
 
 
 # Diagnosis
@@ -193,23 +193,23 @@ sdparm
 
 # Rescue - Storage - exFAT
 # ========================
-exFAT
 exfatprogs
 exfat-utils
 
 # Rescue - Storage - APFS
 # =======================
-linux-apfs-rw-dkms-git
-apfsprogs-git
+# linux-apfs-rw-dkms-git
+# apfsprogs-git
 
 # Rescue - Storage - Bcachefs
 # ===========================
-linux-bcachefs-git
+# linux-bcachefs-git
 bcachefs-tools-git
 
 # Rescue - Storage - ZFS
 # ======================
-zfs-linux
+# zfs-linux
+# zfs-linux-lts
 zfs-dkms
 zfs-utils
 
@@ -231,7 +231,7 @@ btrfs-progs
 
 # Rescue - Storage - XFS
 # ======================
-xfs-tools
+# xfs-tools
 
 # Rescue - Storage - ReiserFS
 # ===========================
@@ -259,7 +259,7 @@ udftools
 
 # Rescue - Storage - Reiser4
 # ==========================
-reiser4progs
+# reiser4progs
 
 # Kernel
 # ======
@@ -293,7 +293,7 @@ nvidia-utils
 # lib32-nvidia-utils
 
 # Misc 
-======
+# ====
 yay
 # paru
 nano-syntax-highlighting
@@ -304,7 +304,7 @@ perl
 python
 flameshot
 firefox
-firefox-extension-arch-search
+# firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
 
