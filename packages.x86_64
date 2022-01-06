@@ -136,32 +136,32 @@ gtkmm3
 
 # Calamares
 # =========
-qt5-location 
+qt5-location
 qt5-svg
 qt5-tools
 qt5-webengine
-qt5-xmlpatterns         
+qt5-xmlpatterns
 qt5ct
-polkit-qt5         
+polkit-qt5
 kconfig
 kcoreaddons
 kdbusaddons
-ki18n    
+ki18n
 kpackage
-kparts     
-kpmcore        
+kparts
+kpmcore
 boost
 boost-libs
 libatasmart
 libpwquality
-parted  
-plasma-framework 
-solid       
-udisks2 
+parted
+plasma-framework
+solid
+udisks2
 yaml-cpp
-polkit               
-calamares-configuration
-calamares-branding
+polkit
+# calamares-configuration
+# calamares-branding
 
 # GUI
 # ===
