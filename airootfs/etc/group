@@ -1,5 +1,6 @@
 root:x:0:root
-adm:x:4:liveuser
-wheel:x:10:liveuser
-uucp:x:14:liveuser
-liveuser:x:1000:
+adm:x:4:rebornos
+wheel:x:10:rebornos
+uucp:x:14:rebornos
+rebornos:x:1000:
+autologin:x:967:rebornos

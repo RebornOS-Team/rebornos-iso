@@ -167,7 +167,7 @@ gtkmm3
 # ========
 libinput
 xorg-drivers
-dkms
+# dkms
 
 # Hardware - Other
 # ================
@@ -210,7 +210,7 @@ bcachefs-tools-git
 # ======================
 # zfs-linux
 # zfs-linux-lts
-zfs-dkms
+# zfs-dkms
 zfs-utils
 
 # Rescue - Storage - VFAT
