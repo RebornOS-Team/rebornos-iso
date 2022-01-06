@@ -173,6 +173,8 @@ lightdm-slick-greeter
 
 # Repair
 # ======
+rate-mirrors
+refresh-mirrors-rebornos
 inxi
 pastebinit
 yay
