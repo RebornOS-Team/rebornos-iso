@@ -173,7 +173,6 @@ xorg-drivers
 # ================
 # xf86-input-mtrack-git
 
-
 # Diagnosis
 # =========
 inxi
@@ -183,7 +182,6 @@ pastebinit
 # ======
 rate-mirrors
 os-prober
-pastebinit
 
 # Rescue - Storage
 # ================
