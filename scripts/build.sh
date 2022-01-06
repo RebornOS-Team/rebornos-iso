@@ -10,6 +10,9 @@ echo ""
 sh "$SCRIPT_DIRECTORY"/setup.sh
 
 # Clear old directories
+echo ""
+echo "Clearing old directories..."
+echo ""
 sudo rm -r "$WORK_DIRECTORY"
 sudo rm -r "$OUTPUT_DIRECTORY"
 
