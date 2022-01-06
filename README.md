@@ -32,4 +32,3 @@ sh scripts/build.sh
 ## 3. Output
 
 Check the `output/` directory in the project base directory.
-
