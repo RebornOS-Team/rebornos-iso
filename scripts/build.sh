@@ -9,7 +9,11 @@ OUTPUT_DIRECTORY="$PROJECT_DIRECTORY"/output
 echo ""
 sh "$SCRIPT_DIRECTORY"/setup.sh
 
-# Create directories if they don't exist already
+# Clear old directories
+sudo rm -r "$WORK_DIRECTORY"
+sudo rm -r "$OUTPUT_DIRECTORY"
+
+# Create directories
 echo ""
 echo "Creating necessary directories if they do not exist..."
 echo ""
