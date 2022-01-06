@@ -50,7 +50,6 @@ less
 lftp
 libfido2
 libusb-compat
-linux
 linux-atm
 linux-firmware
 livecd-sounds
@@ -121,9 +120,19 @@ xfsprogs
 xl2tpd
 zsh
 
-# VM
-# ==
+# Kernel
+# ======
+linux-lts
+linux-lts-headers
+
+# VM - VirtualBox
+# ===============
 virtualbox-guest-utils
+
+# VM - VMware
+# ===========
+open-vm-tools
+gtkmm3
 
 # Calamares
 # =========
@@ -156,6 +165,16 @@ calamares-branding
 
 # GUI
 # ===
+xorg
+hicolor-icon-theme
+lightdm
+xfce4
+lightdm-slick-greeter
 
 # Repair
 # ======
+inxi
+pastebinit
+yay
+os-prober
+gparted
