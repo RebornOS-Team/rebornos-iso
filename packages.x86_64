@@ -84,7 +84,7 @@ pcsclite
 ppp
 pptpclient
 pv
-qemu-guest-agent
+# qemu-guest-agent # Included below
 refind
 reflector
 reiserfsprogs
@@ -110,7 +110,7 @@ usb_modeswitch
 usbmuxd
 usbutils
 vim
-# virtualbox-guest-utils-nox
+# virtualbox-guest-utils-nox # Replaced with virtualbox-guest-utils below
 vpnc
 wireless-regdb
 wireless_tools
@@ -120,22 +120,8 @@ xfsprogs
 xl2tpd
 zsh
 
-# Kernel
-# ======
-linux-lts
-linux-lts-headers
-
-# VM - VirtualBox
-# ===============
-virtualbox-guest-utils
-
-# VM - VMware
-# ===========
-open-vm-tools
-gtkmm3
-
-# Calamares
-# =========
+# Installer - Calamares
+# =====================
 qt5-location
 qt5-svg
 qt5-tools
@@ -160,23 +146,194 @@ solid
 udisks2
 yaml-cpp
 polkit
-# calamares-configuration
-# calamares-branding
+# calamares-configuration # needs to be included in the repository
+# calamares-branding # needs to be included in the repository
+
+# VM - QEMU
+# =========
+qemu-guest-agent
+spice-vdagent
+
+# VM - VirtualBox
+# ===============
+virtualbox-guest-utils
+
+# VM - VMware
+# ===========
+open-vm-tools
+gtkmm3
+
+# Hardware
+# ========
+libinput
+xorg-drivers
+dkms
+
+# Hardware - Other
+==================
+xf86-input-mtrack-git # Macbook multitouch support
+
+
+# Diagnosis
+# =========
+inxi
+pastebinit
+
+# Rescue
+# ======
+rate-mirrors
+os-prober
+pastebinit
+
+# Rescue - Storage
+# ================
+gparted
+hdparm
+sdparm
+
+# Rescue - Storage - exFAT
+# ========================
+exFAT
+exfatprogs
+exfat-utils
+
+# Rescue - Storage - APFS
+# =======================
+linux-apfs-rw-dkms-git
+apfsprogs-git
+
+# Rescue - Storage - Bcachefs
+# ===========================
+linux-bcachefs-git
+bcachefs-tools-git
+
+# Rescue - Storage - ZFS
+# ======================
+zfs-linux
+zfs-dkms
+zfs-utils
+
+# Rescue - Storage - VFAT
+# =======================
+dosfstools
+
+# Rescue - Storage - ext3, ext4
+# =============================
+e2fsprogs
+
+# Rescue - Storage - NTFS
+# =======================
+ntfs-3g
+
+# Rescue - Storage - BTRFS
+# ========================
+btrfs-progs
+
+# Rescue - Storage - XFS
+# ======================
+xfs-tools
+
+# Rescue - Storage - ReiserFS
+# ===========================
+reiserfsprogs
+
+# Rescue - Storage - F2FS
+# =======================
+f2fs-tools
+
+# Rescue - Storage - HFS
+# ======================
+hfsprogs
+
+# Rescue - Storage - JFS
+# ======================
+jfsutils
+
+# Rescue - Storage - NILFS2
+# =========================
+nilfs-utils
+
+# Rescue - Storage - UDF
+# ======================
+udftools
+
+# Rescue - Storage - Reiser4
+# ==========================
+reiser4progs
+
+# Kernel
+# ======
+# linux
+# linux-headers
+linux-lts
+linux-lts-headers
 
 # GUI
 # ===
+xfce4
+# xfce4-goodies 
+lightdm
 xorg
 hicolor-icon-theme
-lightdm
-xfce4
 lightdm-slick-greeter
 
-# Repair
-# ======
-rate-mirrors
-refresh-mirrors-rebornos
-inxi
-pastebinit
+# GUI - AMD
+# =========
+mesa
+mesa-utils
+# lib32-mesa
+mesa-vdpau
+# lib32-mesa-vdpau
+
+# GUI - NVIDIA
+# ============
+# nvidia
+nvidia-lts
+nvidia-utils
+# lib32-nvidia-utils
+
+# Misc 
+======
 yay
-os-prober
-gparted
+# paru
+nano-syntax-highlighting
+neofetch
+gedit
+gedit-plugins
+perl
+python
+flameshot
+firefox
+firefox-extension-arch-search
+# xdg-utils
+# xorg-apps
+
+# Showcase
+# ========
+# starship
+# baobab
+# bleachbit
+# code
+# grub-customizer
+# hardinfo
+# libreoffice-fresh
+# pace 
+# pamac
+# stacer
+# timeshift
+# gnome-boxes
+# discord
+# pidgin
+# inkscape
+# krita
+# obs-studio
+
+# RebornOS
+# ========
+rebornos-iso-welcome
+rebornos-fire
+refresh-mirrors-rebornos
+rebornos-logo
+rebornos-keyring
+rebornos-mirrorlist
+rebornos-os-release
