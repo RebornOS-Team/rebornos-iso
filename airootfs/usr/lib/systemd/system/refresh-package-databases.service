@@ -1,7 +1,7 @@
 [Unit]
 Description=Refresh all package databases
-Requires=network-online.target
-After=refresh-mirrors-rebornos.service
+Wants=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
 
 [Service]
 Type=oneshot
