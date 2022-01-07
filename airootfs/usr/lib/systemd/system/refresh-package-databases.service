@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh all package databases
+Requires=network-online.target
+After=refresh-mirrors-rebornos.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env sh /usr/bin/refresh-package-databases.sh
+
+[Install]
+WantedBy=multi-user.target
