@@ -5,5 +5,3 @@
 
 # Launch Neofetch
 neofetch
-
-
