@@ -170,7 +170,7 @@ xorg-drivers
 # dkms
 
 # Hardware - Network
-====================
+# ==================
 networkmanager
 network-manager-applet
 modemmanager
@@ -178,7 +178,7 @@ usb_modeswitch
 rp-pppoe
 
 # Hardware - Network - VPN
-==========================
+# =========================
 wireguard-tools
 networkmanager-openconnect
 networkmanager-openvpn
