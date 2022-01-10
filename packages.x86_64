@@ -233,14 +233,14 @@ exfat-utils
 # Rescue - Storage - Bcachefs
 # ===========================
 # linux-bcachefs-git
-bcachefs-tools-git
+# bcachefs-tools-git
 
 # Rescue - Storage - ZFS
 # ======================
 # zfs-linux
 # zfs-linux-lts
 # zfs-dkms
-zfs-utils
+# zfs-utils
 
 # Rescue - Storage - VFAT
 # =======================
@@ -272,7 +272,7 @@ f2fs-tools
 
 # Rescue - Storage - HFS
 # ======================
-hfsprogs
+# hfsprogs
 
 # Rescue - Storage - JFS
 # ======================
