@@ -1,3 +1,4 @@
+# =======
 # ArchISO
 # =======
 alsa-utils
@@ -120,6 +121,7 @@ xfsprogs
 xl2tpd
 zsh
 
+# =====================
 # Installer - Calamares
 # =====================
 qt5-location
@@ -149,26 +151,31 @@ polkit
 # calamares-configuration # needs to be included in the repository
 # calamares-branding # needs to be included in the repository
 
+# =========
 # VM - QEMU
 # =========
 qemu-guest-agent
 spice-vdagent
 
+# ===============
 # VM - VirtualBox
 # ===============
 virtualbox-guest-utils
 
+# ===============
 # VM - VMware
 # ===========
 open-vm-tools
 gtkmm3
 
+# ========
 # Hardware
 # ========
 libinput
 xorg-drivers
 # dkms
 
+# ==================
 # Hardware - Network
 # ==================
 networkmanager
@@ -177,6 +184,7 @@ modemmanager
 usb_modeswitch
 rp-pppoe
 
+# =========================
 # Hardware - Network - VPN
 # =========================
 wireguard-tools
@@ -188,22 +196,26 @@ networkmanager-strongswan
 networkmanager-l2tp
 network-manager-sstp
 
+# ================
 # Hardware - Other
 # ================
 # xf86-input-mtrack-git
 
+# =========
 # Diagnosis
 # =========
 inxi
 pastebinit
 
+# ======
 # Rescue
 # ======
 rate-mirrors
 os-prober
 
+# ----------------
 # Rescue - Storage
-# ================
+# ----------------
 gparted
 hdparm
 sdparm
@@ -278,6 +290,7 @@ udftools
 # ==========================
 # reiser4progs
 
+# ======
 # Kernel
 # ======
 # linux
@@ -285,6 +298,7 @@ udftools
 linux-lts
 linux-lts-headers
 
+# ===
 # GUI
 # ===
 xfce4
@@ -294,21 +308,24 @@ xorg
 hicolor-icon-theme
 lightdm-slick-greeter
 
+# ---------
 # GUI - AMD
-# =========
+# ---------
 mesa
 mesa-utils
 # lib32-mesa
 mesa-vdpau
 # lib32-mesa-vdpau
 
+# ------------
 # GUI - NVIDIA
-# ============
+# ------------
 # nvidia
 nvidia-lts
 nvidia-utils
 # lib32-nvidia-utils
 
+# ====
 # Misc 
 # ====
 yay
@@ -325,6 +342,7 @@ firefox
 # xdg-utils
 # xorg-apps
 
+# ========
 # Showcase
 # ========
 # starship
@@ -345,6 +363,7 @@ firefox
 # krita
 # obs-studio
 
+# ========
 # RebornOS
 # ========
 rebornos-iso-welcome
