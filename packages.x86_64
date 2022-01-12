@@ -302,7 +302,7 @@ linux-lts-headers
 # GUI
 # ===
 xfce4
-# xfce4-goodies 
+xfce4-goodies 
 lightdm
 xorg
 hicolor-icon-theme
@@ -332,12 +332,11 @@ yay
 # paru
 nano-syntax-highlighting
 neofetch
-gedit
-gedit-plugins
 perl
 python
-flameshot
 firefox
+otf-fira-mono
+otf-fira-sans
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
