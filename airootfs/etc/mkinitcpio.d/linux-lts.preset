@@ -1,6 +1,0 @@
-PRESETS=('archiso')
-
-ALL_kver='/boot/x86_64/vmlinuz-linux'
-ALL_config='/etc/mkinitcpio.conf'
-
-archiso_image="/boot/x86_64/initramfs-linux.img"

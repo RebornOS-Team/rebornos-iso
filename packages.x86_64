@@ -200,6 +200,9 @@ network-manager-sstp
 # Hardware - Other
 # ================
 # xf86-input-mtrack-git
+# ** AUR **
+rtl8821ce-dkms-git
+rtl88xxau-aircrack-dkms-git
 
 # =========
 # Diagnosis
@@ -293,10 +296,10 @@ udftools
 # ======
 # Kernel
 # ======
-# linux
-# linux-headers
-linux-lts
-linux-lts-headers
+linux
+linux-headers
+# linux-lts
+# linux-lts-headers
 
 # ===
 # GUI
@@ -320,16 +323,16 @@ mesa-vdpau
 # ------------
 # GUI - NVIDIA
 # ------------
-# nvidia
-nvidia-lts
+nvidia
+# nvidia-lts
 nvidia-utils
 # lib32-nvidia-utils
 
 # ====
 # Misc 
 # ====
-yay
-# paru
+# yay
+paru-bin
 nano-syntax-highlighting
 neofetch
 perl
@@ -367,7 +370,7 @@ otf-fira-sans
 # ========
 rebornos-iso-welcome
 rebornos-fire
-refresh-mirrors-rebornos
+xfce-minimal-iso/refresh-mirrors-rebornos
 rebornos-logo
 rebornos-keyring
 rebornos-mirrorlist

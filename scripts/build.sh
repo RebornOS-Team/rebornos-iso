@@ -30,5 +30,6 @@ echo ""
 echo "Building the ISO image..."
 echo ""
 set -o xtrace
+# rsync 
 sudo mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY"
 set +o xtrace
