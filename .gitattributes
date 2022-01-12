@@ -1,3 +1,5 @@
 *.pkg.tar.zst filter=lfs diff=lfs merge=lfs -text
 *.db.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.files.tar.gz filter=lfs diff=lfs merge=lfs -text
+*.db filter=lfs diff=lfs merge=lfs -text
+*.files filter=lfs diff=lfs merge=lfs -text
