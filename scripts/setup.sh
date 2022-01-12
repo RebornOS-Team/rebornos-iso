@@ -14,3 +14,10 @@ echo ""
 set -o xtrace
 git lfs pull
 set +o xtrace
+
+echo "Synchronizing local repository..."
+echo ""
+set -o xtrace
+sudo mkdir -p /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
+sudo rsync -abviuP local_repo/ /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
+set +o xtrace
