@@ -6,5 +6,5 @@ PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
 echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
-sudo pacman -S --needed "$@" archiso
+sudo pacman -S --needed "$@" archiso git git-lfs
 set +o xtrace

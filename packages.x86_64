@@ -302,7 +302,7 @@ linux-lts-headers
 # GUI
 # ===
 xfce4
-xfce4-goodies 
+xfce4-goodies
 lightdm
 xorg
 hicolor-icon-theme
