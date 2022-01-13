@@ -9,7 +9,7 @@ b43-fwcutter
 base
 bind-tools
 brltty
-broadcom-wl
+# broadcom-wl # DKMS version included below
 btrfs-progs
 clonezilla
 cloud-init
@@ -173,7 +173,6 @@ gtkmm3
 # ========
 libinput
 xorg-drivers
-# dkms
 
 # ==================
 # Hardware - Network
@@ -201,6 +200,8 @@ network-manager-sstp
 # ================
 # xf86-input-mtrack-git
 # ** AUR **
+broadcom-wl-dkms
+b43-firmware
 rtl8821ce-dkms-git
 rtl88xxau-aircrack-dkms-git
 
@@ -333,6 +334,7 @@ nvidia-utils
 # ====
 # yay
 paru-bin
+base-devel
 nano-syntax-highlighting
 neofetch
 perl

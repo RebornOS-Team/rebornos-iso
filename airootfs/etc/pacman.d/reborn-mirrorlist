@@ -1,21 +1,105 @@
-Server = https://plug-mirror.rcac.purdue.edu/osdn/storage/g/r/re/rebornos/repo/RebornOS/
-Server = http://osdn.mirror.constant.com/storage/g/r/re/rebornos/repo/RebornOS/
-Server = http://downloads.sourceforge.net/rebornos/r/RebornOS/
+# STARTED AT: 2022-01-13 02:58:12.104396477 -06:00
+# ARGS: /usr/bin/rate-mirrors --concurrency=16 --per-mirror-timeout=3000 --allow-root --save=/tmp/pacman.d/reborn-mirrorlist rebornos
+# FETCHED 38 MIRRORS FROM REBORNOS
+# JUMP #1
+# EXPLORING US
+# VISITED US
+# BLANK ITERATION
+# COUNTRY JUMPING YIELDED TOO FEW MIRRORS (0), ADDING OTHERS TO UNLABELED
+# 
+
+# TESTING UNLABELED MIRRORS
+# SpeedTestResult { speed: 263.40 KB/s; elapsed: 1.429656309s; connection_time: 1.354811628s}
+# SpeedTestResult { speed: 205.72 KB/s; elapsed: 1.991011123s; connection_time: 796.233615ms}
+# SpeedTestResult { speed: 772.58 KB/s; elapsed: 2.078274364s; connection_time: 744.509695ms}
+# SpeedTestResult { speed: 40.01 KB/s; elapsed: 2.23912505s; connection_time: 382.105868ms}
+# SpeedTestResult { speed: 140.52 KB/s; elapsed: 1.513922987s; connection_time: 1.268493655s}
+# SpeedTestResult { speed: 59.65 KB/s; elapsed: 2.296273056s; connection_time: 640.656838ms}
+# SpeedTestResult { speed: 189.81 KB/s; elapsed: 1.29344727s; connection_time: 1.552452652s}
+# SpeedTestResult { speed: 1.08 MB/s; elapsed: 2.710761441s; connection_time: 269.829248ms}
+# SpeedTestResult { speed: 1.86 MB/s; elapsed: 2.785263978s; connection_time: 168.346732ms}
+# SpeedTestResult { speed: 423.30 KB/s; elapsed: 2.553963323s; connection_time: 302.136672ms}
+# SpeedTestResult { speed: 79.03 KB/s; elapsed: 2.213751171s; connection_time: 380.921432ms}
+# SpeedTestResult { speed: 615.61 KB/s; elapsed: 2.575216216s; connection_time: 196.462926ms}
+# SpeedTestResult { speed: 47.67 KB/s; elapsed: 1.678112s; connection_time: 1.243611931s}
+# SpeedTestResult { speed: 836.69 KB/s; elapsed: 328.509263ms; connection_time: 947.737952ms}
+# SpeedTestResult { speed: 589.70 KB/s; elapsed: 472.963609ms; connection_time: 875.08582ms}
+# SpeedTestResult { speed: 1.00 MB/s; elapsed: 267.41241ms; connection_time: 1.360060481s}
+# SpeedTestResult { speed: 684.41 KB/s; elapsed: 469.075545ms; connection_time: 1.184147034s}
+# SpeedTestResult { speed: 396.38 KB/s; elapsed: 720.778545ms; connection_time: 1.011995806s}
+# SpeedTestResult { speed: 596.07 KB/s; elapsed: 464.810132ms; connection_time: 1.289482455s}
+# SpeedTestResult { speed: 269.86 KB/s; elapsed: 1.02908453s; connection_time: 1.445090296s}
+# SpeedTestResult { speed: 370.99 KB/s; elapsed: 2.060156665s; connection_time: 932.121304ms}
+# SpeedTestResult { speed: 238.78 KB/s; elapsed: 2.194560395s; connection_time: 744.803237ms}
+# SpeedTestResult { speed: 69.93 KB/s; elapsed: 1.385132589s; connection_time: 1.613279751s}
+# SpeedTestResult { speed: 80.04 KB/s; elapsed: 1.210095315s; connection_time: 1.718840441s}
+# SpeedTestResult { speed: 250.29 KB/s; elapsed: 2.028241153s; connection_time: 896.555127ms}
+# SpeedTestResult { speed: 1.59 MB/s; elapsed: 2.782810999s; connection_time: 214.695985ms}
+# SpeedTestResult { speed: 953.61 KB/s; elapsed: 295.309567ms; connection_time: 2.256612726s}
+# SpeedTestResult { speed: 5.08 MB/s; elapsed: 1.266182447s; connection_time: 992.411891ms}
+# 
+
+# RE-TESTING TOP MIRRORS
+# SpeedTestResult { speed: 5.68 MB/s; elapsed: 1.132363335s; connection_time: 334.628145ms}
+# SpeedTestResult { speed: 3.49 MB/s; elapsed: 2.131725467s; connection_time: 154.076015ms}
+# SpeedTestResult { speed: 5.12 MB/s; elapsed: 1.456102686s; connection_time: 255.875087ms}
+# SpeedTestResult { speed: 1.67 MB/s; elapsed: 180.471706ms; connection_time: 1.241297581s}
+# SpeedTestResult { speed: 5.51 MB/s; elapsed: 1.353044508s; connection_time: 147.166748ms}
+# ==== RESULTS (top re-tested) ====
+#   1. SpeedTestResult { speed: 5.68 MB/s; elapsed: 1.132363335s; connection_time: 334.628145ms} -> https://mirror.clarkson.edu/RebornOS/
+#   2. SpeedTestResult { speed: 5.51 MB/s; elapsed: 1.353044508s; connection_time: 147.166748ms} -> http://osdn.mirror.constant.com/storage/g/r/re/rebornos/repo/RebornOS/
+#   3. SpeedTestResult { speed: 5.12 MB/s; elapsed: 1.456102686s; connection_time: 255.875087ms} -> https://plug-mirror.rcac.purdue.edu/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#   4. SpeedTestResult { speed: 3.49 MB/s; elapsed: 2.131725467s; connection_time: 154.076015ms} -> http://sourceforge.mirror.iweb.com/project/rebornos/r/RebornOS/
+#   5. SpeedTestResult { speed: 1.67 MB/s; elapsed: 180.471706ms; connection_time: 1.241297581s} -> http://freefr.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#   6. SpeedTestResult { speed: 953.61 KB/s; elapsed: 295.309567ms; connection_time: 2.256612726s} -> https://deac-riga.dl.sourceforge.net/project/rebornos/r/RebornOS/
+#   7. SpeedTestResult { speed: 836.69 KB/s; elapsed: 328.509263ms; connection_time: 947.737952ms} -> http://versaweb.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#   8. SpeedTestResult { speed: 772.58 KB/s; elapsed: 2.078274364s; connection_time: 744.509695ms} -> https://ftp.iij.ad.jp/pub/osdn.jp/storage/g/r/re/rebornos/repo/RebornOS/
+#   9. SpeedTestResult { speed: 684.41 KB/s; elapsed: 469.075545ms; connection_time: 1.184147034s} -> http://netcologne.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS
+#  10. SpeedTestResult { speed: 615.61 KB/s; elapsed: 2.575216216s; connection_time: 196.462926ms} -> http://mirror.math.princeton.edu/pub/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  11. SpeedTestResult { speed: 596.07 KB/s; elapsed: 464.810132ms; connection_time: 1.289482455s} -> http://astuteinternet.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  12. SpeedTestResult { speed: 589.70 KB/s; elapsed: 472.963609ms; connection_time: 875.08582ms} -> http://newcontinuum.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  13. SpeedTestResult { speed: 423.30 KB/s; elapsed: 2.553963323s; connection_time: 302.136672ms} -> https://mirrors.gigenet.com/OSDN/storage/g/r/re/rebornos/repo/RebornOS/
+#  14. SpeedTestResult { speed: 396.38 KB/s; elapsed: 720.778545ms; connection_time: 1.011995806s} -> http://phoenixnap.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  15. SpeedTestResult { speed: 370.99 KB/s; elapsed: 2.060156665s; connection_time: 932.121304ms} -> http://downloads.sourceforge.net/rebornos/r/RebornOS/
+#  16. SpeedTestResult { speed: 269.86 KB/s; elapsed: 1.02908453s; connection_time: 1.445090296s} -> http://razaoinfo.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  17. SpeedTestResult { speed: 263.40 KB/s; elapsed: 1.429656309s; connection_time: 1.354811628s} -> https://mirrors.dotsrc.org/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  18. SpeedTestResult { speed: 250.29 KB/s; elapsed: 2.028241153s; connection_time: 896.555127ms} -> https://jztkft.dl.sourceforge.net/project/rebornos/r/RebornOS/
+#  19. SpeedTestResult { speed: 238.78 KB/s; elapsed: 2.194560395s; connection_time: 744.803237ms} -> https://repo.rebornos.org/RebornOS/
+#  20. SpeedTestResult { speed: 205.72 KB/s; elapsed: 1.991011123s; connection_time: 796.233615ms} -> https://ftp.jaist.ac.jp/pub/sourceforge.jp/storage/g/r/re/rebornos/repo/RebornOS/
+#  21. SpeedTestResult { speed: 189.81 KB/s; elapsed: 1.29344727s; connection_time: 1.552452652s} -> https://mirror.liquidtelecom.com/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  22. SpeedTestResult { speed: 140.52 KB/s; elapsed: 1.513922987s; connection_time: 1.268493655s} -> https://mirrors.bfsu.edu.cn/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  23. SpeedTestResult { speed: 80.04 KB/s; elapsed: 1.210095315s; connection_time: 1.718840441s} -> http://liquidtelecom.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  24. SpeedTestResult { speed: 79.03 KB/s; elapsed: 2.213751171s; connection_time: 380.921432ms} -> http://osdn.ip-connect.vn.ua/storage/g/r/re/rebornos/repo/RebornOS/
+#  25. SpeedTestResult { speed: 69.93 KB/s; elapsed: 1.385132589s; connection_time: 1.613279751s} -> http://cfhcable.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+#  26. SpeedTestResult { speed: 59.65 KB/s; elapsed: 2.296273056s; connection_time: 640.656838ms} -> http://ftp.halifax.rwth-aachen.de/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  27. SpeedTestResult { speed: 47.67 KB/s; elapsed: 1.678112s; connection_time: 1.243611931s} -> https://openbsd.c3sl.ufpr.br/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+#  28. SpeedTestResult { speed: 40.01 KB/s; elapsed: 2.23912505s; connection_time: 382.105868ms} -> http://mirroronet.pl/pub/mirrors/sourceforge.jp/storage/g/r/re/rebornos/repo/RebornOS/
+# FINISHED AT: 2022-01-13 02:58:28.842825803 -06:00
 Server = https://mirror.clarkson.edu/RebornOS/
-Server = https://deac-riga.dl.sourceforge.net/project/rebornos/r/RebornOS/
-Server = http://razaoinfo.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
-Server = http://netcologne.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS
-Server = http://netix.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
-Server = http://liquidtelecom.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
-Server = http://tenet.dl.sourceforge.net/project/rebornos/r/RebornOS/
-Server = http://excellmedia.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
-Server = https://mirrors.dotsrc.org/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://osdn.mirror.constant.com/storage/g/r/re/rebornos/repo/RebornOS/
+Server = https://plug-mirror.rcac.purdue.edu/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://sourceforge.mirror.iweb.com/project/rebornos/r/RebornOS/
 Server = http://freefr.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
-Server = https://jztkft.dl.sourceforge.net/project/rebornos/r/RebornOS/
-Server = http://cfhcable.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = https://deac-riga.dl.sourceforge.net/project/rebornos/r/RebornOS/
+Server = http://versaweb.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = https://ftp.iij.ad.jp/pub/osdn.jp/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://netcologne.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS
 Server = http://mirror.math.princeton.edu/pub/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://astuteinternet.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
 Server = http://newcontinuum.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
 Server = https://mirrors.gigenet.com/OSDN/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://phoenixnap.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = http://downloads.sourceforge.net/rebornos/r/RebornOS/
+Server = http://razaoinfo.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = https://mirrors.dotsrc.org/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = https://jztkft.dl.sourceforge.net/project/rebornos/r/RebornOS/
 Server = https://repo.rebornos.org/RebornOS/
-Server = http://osdn.ip-connect.vn.ua/storage/g/r/re/rebornos/repo/RebornOS/
 Server = https://ftp.jaist.ac.jp/pub/sourceforge.jp/storage/g/r/re/rebornos/repo/RebornOS/
+Server = https://mirror.liquidtelecom.com/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = https://mirrors.bfsu.edu.cn/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://liquidtelecom.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = http://osdn.ip-connect.vn.ua/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://cfhcable.dl.sourceforge.net/sourceforge/rebornos/r/RebornOS/
+Server = http://ftp.halifax.rwth-aachen.de/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = https://openbsd.c3sl.ufpr.br/osdn/storage/g/r/re/rebornos/repo/RebornOS/
+Server = http://mirroronet.pl/pub/mirrors/sourceforge.jp/storage/g/r/re/rebornos/repo/RebornOS/
