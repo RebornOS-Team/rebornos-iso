@@ -22,12 +22,21 @@ git lfs pull
 set +o xtrace
 
 echo ""
-echo "Synchronizing local repository..."
+echo "Updating local package repository for ISO building..."
 echo ""
 set -o xtrace
 sudo mkdir -p /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
 sudo rsync -abviuP "$PROJECT_DIRECTORY"/local_repo/ /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
 set +o xtrace
+
+echo ""
+echo "Updating local ISO package repository for Calamares..."
+echo ""
+set -o xtrace
+sudo mkdir -p "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
+sudo rsync -abviuP "$PROJECT_DIRECTORY"/local_repo/ "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
+set +o xtrace
+
 
 echo ""
 echo "Copying mirrorlists..."
