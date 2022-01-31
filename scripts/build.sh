@@ -13,8 +13,10 @@ sh "$SCRIPT_DIRECTORY"/setup.sh
 echo ""
 echo "Clearing old directories..."
 echo ""
+set -o xtrace
 sudo rm -r "$WORK_DIRECTORY"
 sudo rm -r "$OUTPUT_DIRECTORY"
+set +o xtrace
 
 # Create directories
 echo ""

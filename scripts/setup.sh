@@ -14,12 +14,13 @@ sudo pacman -S --needed "$@" archiso git git-lfs rsync
 git lfs install
 set +o xtrace
 
-echo ""
-echo "Pulling LFS files..."
-echo ""
-set -o xtrace
-git lfs pull
-set +o xtrace
+# Risky and breaks the system
+# echo ""
+# echo "Pulling LFS files..."
+# echo ""
+# set -o xtrace
+# git lfs pull
+# set +o xtrace
 
 echo ""
 echo "Updating local package repository for ISO building..."
@@ -37,7 +38,6 @@ sudo mkdir -p "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-min
 sudo rsync -abviuP "$PROJECT_DIRECTORY"/local_repo/ "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
 set +o xtrace
 
-
 echo ""
 echo "Copying mirrorlists..."
 echo ""
@@ -46,11 +46,12 @@ cp -f /etc/pacman.d/reborn-mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d
 cp -f /etc/pacman.d/mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d/
 set +o xtrace
 
-echo ""
-echo "Copying package databases..."
-echo ""
-set -o xtrace
-mkdir -p "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
-sudo pacman -Syy
-rsync -abviuP /var/lib/pacman/sync/ "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
-set +o xtrace
+# This is causing the build to break because the remote LFS gets outdated and is pulled above
+# echo ""
+# echo "Copying package databases..."
+# echo ""
+# set -o xtrace
+# mkdir -p "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
+# sudo pacman -Syy
+# rsync -abviuP /var/lib/pacman/sync/ "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
+# set +o xtrace
