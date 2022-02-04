@@ -3,6 +3,17 @@
 SCRIPT_DIRECTORY="$(dirname -- "$(readlink -f -- "$0")")"
 PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
 
+LOCAL_REPO_DIRECTORY="/usr/local/share/rebornos-labs/xfce-minimal-iso/repo"
+ISO_REPO_DIRECTORY="$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
+
+EXTRA_PACKAGES=(
+    "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.16-1-any.pkg.tar.zst"
+    paru-bin
+    b43-firmware
+    rtl88xxau-aircrack-dkms-git
+    rtl8821ce-dkms-git
+)
+
 echo "Script directory: $SCRIPT_DIRECTORY"
 echo "Project directory: $PROJECT_DIRECTORY"
 
@@ -10,32 +21,21 @@ echo ""
 echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
-sudo pacman -S --needed "$@" archiso git git-lfs rsync
+sudo pacman -S --needed archlinux-keyring rebornos-keyring archiso git git-lfs rsync "$@"
 git lfs install
 set +o xtrace
 
-# Risky and breaks the system
-# echo ""
-# echo "Pulling LFS files..."
-# echo ""
-# set -o xtrace
-# git lfs pull
-# set +o xtrace
-
 echo ""
-echo "Updating local package repository for ISO building..."
+echo "Updating local repository for ISO Building..."
 echo ""
-set -o xtrace
-sudo mkdir -p /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
-sudo rsync -abviuP "$PROJECT_DIRECTORY"/local_repo/ /usr/local/share/rebornos-labs/xfce-minimal-iso/repo/
-set +o xtrace
+printf "%s\n" "${EXTRA_PACKAGES[@]}" | xargs -d '\n' "$PROJECT_DIRECTORY"/scripts/repo-add.sh
 
 echo ""
 echo "Updating local ISO package repository for Calamares..."
 echo ""
 set -o xtrace
-sudo mkdir -p "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
-sudo rsync -abviuP "$PROJECT_DIRECTORY"/local_repo/ "$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
+sudo mkdir -p "$ISO_REPO_DIRECTORY"
+sudo rsync -abviuP "$LOCAL_REPO_DIRECTORY" "$(dirname -- "$ISO_REPO_DIRECTORY")"
 set +o xtrace
 
 echo ""
@@ -45,13 +45,3 @@ set -o xtrace
 cp -f /etc/pacman.d/reborn-mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d/
 cp -f /etc/pacman.d/mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d/
 set +o xtrace
-
-# This is causing the build to break because the remote LFS gets outdated and is pulled above
-# echo ""
-# echo "Copying package databases..."
-# echo ""
-# set -o xtrace
-# mkdir -p "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
-# sudo pacman -Syy
-# rsync -abviuP /var/lib/pacman/sync/ "$PROJECT_DIRECTORY"/airootfs/var/lib/pacman/sync/
-# set +o xtrace

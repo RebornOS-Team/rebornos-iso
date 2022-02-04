@@ -71,7 +71,7 @@ if [ ! -z "$package_files" ]; then
     echo ""
 else    
     set +o xtrace
-    
+
     echo ""
     echo "No packages to add..."
     echo ""
