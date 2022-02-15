@@ -342,6 +342,7 @@ python
 firefox
 otf-fira-mono
 otf-fira-sans
+packagekit
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
