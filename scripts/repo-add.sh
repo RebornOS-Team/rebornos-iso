@@ -8,9 +8,22 @@ REPO_NAME="xfce-minimal-iso"
 REPO_EXTENSION="db.tar.xz"
 BUILD_DIRECTORY="/var/tmp/repo_build"
 
+USER="$(whoami)"
 PWD="$(pwd)"
 SCRIPT_DIRECTORY="$(dirname -- "$(readlink -f -- "$0")")"
 PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
+
+# Create the repo directory if it does not exist
+sudo mkdir -p "$REPO_DIRECTORY"
+sudo chown -R "$USER" "$REPO_DIRECTORY"
+
+# Create and switch to the build directory
+mkdir -p "$BUILD_DIRECTORY"
+cd "$BUILD_DIRECTORY"
+if [ "$(pwd)" != "$(realpath "$BUILD_DIRECTORY")" ]; then
+    echo "Could not create and switch to $BUILD_DIRECTORY. The current directory is $(pwd)"
+    exit 1
+fi
 
 package_files=""
 for package_name in "$@"; do
@@ -22,15 +35,7 @@ for package_name in "$@"; do
         if [ "$?" -ne 0 ]; then
             rm -f "$REPO_DIRECTORY/$package_name"  
         fi  
-    else
-        # Create and switch to the build directory
-        mkdir -p "$BUILD_DIRECTORY"
-        cd "$BUILD_DIRECTORY"
-        if [ "$(pwd)" != "$(realpath "$BUILD_DIRECTORY")" ]; then
-            echo "Could not create and switch to $BUILD_DIRECTORY. The current directory is $(pwd)"
-            exit 1
-        fi
-
+    else       
         GIVEN_VERSION=$(yay -Si "aur/$package_name" | grep "Version" | cut -d ':' -f2 | xargs)
         if ls "$REPO_DIRECTORY/$package_name"*.pkg* > /dev/null 2>&1;then
             REPO_VERSION=$(ls -t "$REPO_DIRECTORY/$package_name"*.pkg* | head -n 1 | sed -rn "s/.*(\/)?$package_name-(.*)-.*\.pkg\..*/\2/p")
