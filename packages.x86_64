@@ -121,34 +121,6 @@ xfsprogs
 xl2tpd
 zsh
 
-# =====================
-# Installer - Calamares
-# =====================
-qt5-location
-qt5-svg
-qt5-tools
-qt5-webengine
-qt5-xmlpatterns
-qt5ct
-polkit-qt5
-kconfig
-kcoreaddons
-kdbusaddons
-ki18n
-kpackage
-kparts
-kpmcore
-boost
-boost-libs
-libatasmart
-libpwquality
-parted
-plasma-framework
-solid
-udisks2
-yaml-cpp
-polkit
-
 # =========
 # VM - QEMU
 # =========
@@ -197,11 +169,11 @@ network-manager-sstp
 # Hardware - Other
 # ================
 # xf86-input-mtrack-git
-# ** AUR **
 broadcom-wl-dkms
+# ** AUR **
 b43-firmware
-rtl8821ce-dkms-git
 rtl88xxau-aircrack-dkms-git
+rtl8821ce-dkms-git
 
 # =========
 # Diagnosis
@@ -376,6 +348,36 @@ rebornos-logo
 rebornos-keyring
 rebornos-mirrorlist
 rebornos-os-release
+
+# =====================
+# Installer - Calamares
+# =====================
+qt5-location
+qt5-svg
+qt5-tools
+qt5-webengine
+qt5-xmlpatterns
+qt5ct
+polkit-qt5
+kconfig
+kcoreaddons
+kdbusaddons
+ki18n
+kpackage
+kparts
+kpmcore
+plasma-framework
+boost
+boost-libs
+appstream-qt
+libatasmart
+libpwquality
+parted
+solid
+udisks2
+yaml-cpp
+polkit
+ckbcomp
 calamares-branding
 calamares-configuration
 calamares-core

@@ -43,7 +43,7 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
     ISO_INSTALLER_DIRECTORY="$PROJECT_DIRECTORY/airootfs/home/rebornos/calamares-installer"
     sudo mkdir -p "$ISO_INSTALLER_DIRECTORY"
     echo "Copying the installer files to $ISO_INSTALLER_DIRECTORY..."
-    sudo rsync -abviuP "$INSTALLER_DIRECTORY" "$(dirname -- "$ISO_INSTALLER_DIRECTORY")"
+    sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY" "$(dirname -- "$ISO_INSTALLER_DIRECTORY")"
 
     echo "Removing old installer packages from the local repo and adding new ones if they exist..."
     if ls "$INSTALLER_DIRECTORY/calamares-branding/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
