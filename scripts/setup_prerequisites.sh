@@ -7,7 +7,7 @@ LOCAL_REPO_DIRECTORY="/usr/local/share/rebornos-labs/xfce-minimal-iso/repo"
 ISO_REPO_DIRECTORY="$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
 
 EXTRA_PACKAGES=(
-    "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.16-1-any.pkg.tar.zst"
+    "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.18-1-any.pkg.tar.zst"
     paru-bin
     b43-firmware
     rtl88xxau-aircrack-dkms-git
