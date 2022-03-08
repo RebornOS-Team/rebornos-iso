@@ -148,8 +148,6 @@ solid
 udisks2
 yaml-cpp
 polkit
-# calamares-configuration # needs to be included in the repository
-# calamares-branding # needs to be included in the repository
 
 # =========
 # VM - QEMU
@@ -378,3 +376,6 @@ rebornos-logo
 rebornos-keyring
 rebornos-mirrorlist
 rebornos-os-release
+calamares-branding
+calamares-configuration
+calamares-core
