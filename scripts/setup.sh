@@ -22,7 +22,8 @@ echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
 sudo pacman -Sy archlinux-keyring rebornos-keyring
-sudo pacman -S --needed archiso git git-lfs rsync "$@"
+sudo pacman -S --needed archiso git git-lfs rsync
+yay -S --needed paru-bin "$@"
 git lfs install
 set +o xtrace
 
