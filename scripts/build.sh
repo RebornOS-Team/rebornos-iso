@@ -7,7 +7,7 @@ OUTPUT_DIRECTORY="$PROJECT_DIRECTORY"/output
 
 # Install prerequisites
 echo ""
-sh "$SCRIPT_DIRECTORY"/setup.sh
+sh "$SCRIPT_DIRECTORY"/setup_prerequisites.sh
 
 # Clear old directories
 echo ""
