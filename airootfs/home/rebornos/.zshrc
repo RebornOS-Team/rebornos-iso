@@ -4,4 +4,4 @@
 # eval "$(starship init bash)"
 
 # Launch Neofetch
-neofetch
+fastfetch

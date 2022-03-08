@@ -306,7 +306,7 @@ nvidia-utils
 paru-bin
 base-devel
 nano-syntax-highlighting
-neofetch
+fastfetch-git
 perl
 python
 firefox

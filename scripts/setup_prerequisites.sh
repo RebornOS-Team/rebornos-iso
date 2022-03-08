@@ -8,11 +8,12 @@ ISO_REPO_DIRECTORY="$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfc
 
 EXTRA_PACKAGES=(
     "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.16-1-any.pkg.tar.zst"
-    ckbcomp
     paru-bin
     b43-firmware
     rtl88xxau-aircrack-dkms-git
     rtl8821ce-dkms-git
+    ckbcomp
+    fastfetch-git
 )
 
 echo "Script directory: $SCRIPT_DIRECTORY"
