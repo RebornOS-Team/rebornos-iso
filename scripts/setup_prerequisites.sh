@@ -48,26 +48,34 @@ echo -n "Path: "
 read INSTALLER_DIRECTORY
 # Checking if the specified directory exists and if it is named "calamares-installer"
 if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "calamares-installer" ]; then
+    set -o xtrace
     ISO_INSTALLER_DIRECTORY="$PROJECT_DIRECTORY/airootfs/home/rebornos/calamares-installer"
     sudo mkdir -p "$ISO_INSTALLER_DIRECTORY"
+    set +o xtrace
     echo "Copying the installer files to $ISO_INSTALLER_DIRECTORY..."
     sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY" "$(dirname -- "$ISO_INSTALLER_DIRECTORY")"
 
     echo "Removing old installer packages from the local repo and adding new ones if they exist..."
     if ls "$INSTALLER_DIRECTORY/calamares-branding/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+        set -o xtrace
         "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-branding"
         BRANDING_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-branding/scripts/packaging/"*.pkg* | head -n 1)"
         "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$BRANDING_PACKAGE"
+        set +o xtrace
     fi
     if ls "$INSTALLER_DIRECTORY/calamares-configuration/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+        set -o xtrace
         "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-configuration"
         CONFIGURATION_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-configuration/scripts/packaging/"*.pkg* | head -n 1)"
         "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CONFIGURATION_PACKAGE"
+        set +o xtrace
     fi
     if ls "$INSTALLER_DIRECTORY/calamares-core/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+        set -o xtrace
         "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-core"
         CORE_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-core/scripts/packaging/"*.pkg* | head -n 1)"
         "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CORE_PACKAGE"
+        set +o xtrace
     fi
 else
     echo "Skipping the installer... If you entered a path, check if the directory exists and if it is named \"calamares-installer\""
@@ -78,8 +86,10 @@ echo "Adding or removing Calamares packages automatically depending on whether t
 validate_package_and_edit_list() {
     PACKAGE_NAME="$1"
 
+    set -o xtrace
     sudo pacman --config "$PROJECT_DIRECTORY/pacman.conf" -Syp "$PACKAGE_NAME"
     PACKAGE_MISSING="$?"
+    set +o xtrace
     if grep -q "$PACKAGE_NAME" "$PROJECT_DIRECTORY/packages.x86_64"; then    
         if [ "$PACKAGE_MISSING" -ne 0 ]; then
             echo "Removing $PACKAGE_NAME from the package list since it was not found..."
