@@ -20,6 +20,13 @@ echo "Script directory: $SCRIPT_DIRECTORY"
 echo "Project directory: $PROJECT_DIRECTORY"
 
 echo ""
+echo "Giving executable permissions to the required scripts..."
+echo ""
+set -o xtrace
+sudo chmod -R +x "$PROJECT_DIRECTORY/scripts"
+set +o xtrace
+
+echo ""
 echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
