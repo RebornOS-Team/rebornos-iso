@@ -313,7 +313,7 @@ firefox
 otf-fira-mono
 otf-fira-sans
 packagekit
-pamac-all
+pamac-aur
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
