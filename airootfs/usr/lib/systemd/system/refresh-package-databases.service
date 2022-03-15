@@ -1,7 +1,7 @@
 [Unit]
 Description=Refresh all package databases
-Requires=refresh-mirrors-rebornos.service
-After=refresh-mirrors-rebornos.service
+Requires=refresh-mirrors.service
+After=refresh-mirrors.service
 
 [Service]
 Type=oneshot
