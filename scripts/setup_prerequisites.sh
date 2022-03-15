@@ -14,6 +14,7 @@ EXTRA_PACKAGES=(
     rtl8821ce-dkms-git
     ckbcomp
     fastfetch-git
+    pamac-all
 )
 
 echo "Script directory: $SCRIPT_DIRECTORY"
