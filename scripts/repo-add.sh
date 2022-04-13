@@ -83,8 +83,8 @@ done
 if [ ! -z "$package_files" ]; then 
     set -o xtrace
     package_files=$(echo "$package_files" | xargs)
-    set +o xtrace
-    echo "$package_files" | xargs repo-add -R -n "$REPO_DIRECTORY/$REPO_NAME.$REPO_EXTENSION"     
+    echo "$package_files" | xargs repo-add -R -n "$REPO_DIRECTORY/$REPO_NAME.$REPO_EXTENSION"    
+    set +o xtrace 
 
     echo ""
     echo "Packages added:"

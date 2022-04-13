@@ -34,6 +34,7 @@ sudo pacman -Sy archlinux-keyring rebornos-keyring
 sudo pacman -S --needed archiso git git-lfs rsync
 yay --answerclean None --answerdiff None --answeredit None --answerupgrade None -S --needed paru-bin "$@"
 git lfs install
+git lfs pull
 set +o xtrace
 
 echo ""
