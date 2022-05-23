@@ -50,6 +50,7 @@ sudo rm -R "$REPO_BUILD_DIRECTORY"
 sudo rm -R "$CALAMARES_BRANDING_DIRECTORY"
 sudo rm -R "$CALAMARES_CONFIGURATION_DIRECTORY"
 sudo rm -R "$CALAMARES_CORE_DIRECTORY"
+sudo rm -R "$ISO_INSTALLER_DIRECTORY/calamares-installer"
 sudo rm "/tmp/packages.x86_64"
 
 set +o xtrace
