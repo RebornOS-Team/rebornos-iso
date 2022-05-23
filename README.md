@@ -23,6 +23,14 @@ OR
 git clone git@gitlab.com:rebornos-labs/installer-and-iso/iso/xfce-minimal-iso.git
 ```
 
+## (Optional) Clean-up old packages and directories
+
+You usually do not need to do this unless the build fails.
+The build process following cleanup is usually slow because it has to start from scratch.
+```bash
+sh xfce-minimal-iso/scripts/clean.sh
+```
+
 ## 2. Build
 
 The below script will build the ISO image (and install any prerequisites).
