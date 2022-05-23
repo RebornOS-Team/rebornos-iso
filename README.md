@@ -23,10 +23,10 @@ git clone git@gitlab.com:rebornos-labs/installer-and-iso/iso/xfce-minimal-iso.gi
 
 ## 2. Build
 
-The below script will build the ISO image (and install any prerequisites). You would run something like `cd xfce-minimal-iso` after cloning.
+The below script will build the ISO image (and install any prerequisites).
 
 ```bash
-sh scripts/build.sh
+sh xfce-minimal-iso/scripts/build.sh
 ```
 
 ## 3. Output
