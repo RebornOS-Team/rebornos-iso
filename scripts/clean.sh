@@ -28,6 +28,9 @@ echo ""
 
 set -o xtrace
 
+sudo pacman -R calamares-core
+sudo pacman -R calamares-configuration
+sudo pacman -R calamares-branding
 sudo pacman -R refresh-mirrors
 sudo pacman -R paru-bin
 sudo pacman -R b43-firmware
