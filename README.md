@@ -33,4 +33,4 @@ sh xfce-minimal-iso/scripts/build.sh
 
 ## 3. Output
 
-Check the `output/` directory in the project base directory.
+Check the `xfce-minimal-iso/output/` directory
