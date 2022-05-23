@@ -15,6 +15,8 @@ In order to download the source code to your local computer for testing, or for 
 git clone https://gitlab.com/rebornos-labs/installer-and-iso/iso/xfce-minimal-iso.git   
 ```
 
+OR
+
 ### SSH
 
 ```bash
