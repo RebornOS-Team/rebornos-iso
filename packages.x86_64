@@ -272,9 +272,9 @@ linux-headers
 # linux-lts
 # linux-lts-headers
 
-# ===
-# GUI
-# ===
+# ========
+# Graphics
+# ========
 xfce4
 xfce4-goodies
 lightdm
@@ -282,18 +282,18 @@ xorg
 hicolor-icon-theme
 lightdm-slick-greeter
 
-# ---------
-# GUI - AMD
-# ---------
+# --------------
+# Graphics - AMD
+# --------------
 mesa
 mesa-utils
 # lib32-mesa
 mesa-vdpau
 # lib32-mesa-vdpau
 
-# ------------
-# GUI - NVIDIA
-# ------------
+# -----------------
+# Graphics - NVIDIA
+# -----------------
 nvidia
 # nvidia-lts
 nvidia-utils
@@ -379,6 +379,6 @@ udisks2
 yaml-cpp
 polkit
 ckbcomp
-calamares-branding
 calamares-configuration
 calamares-core
+calamares-branding

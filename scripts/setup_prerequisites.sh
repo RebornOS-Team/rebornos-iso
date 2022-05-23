@@ -6,6 +6,7 @@ PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
 LOCAL_REPO_DIRECTORY="/usr/local/share/rebornos-labs/xfce-minimal-iso/repo"
 ISO_REPO_DIRECTORY="$PROJECT_DIRECTORY"/airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo/
 ISO_INSTALLER_DIRECTORY="$PROJECT_DIRECTORY/airootfs/home/rebornos"
+RELATIVE_PACKAGE_BUILD_SCRIPT="scripts/build_package.sh"
 
 EXTRA_PACKAGES=(
     "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.20-1-any.pkg.tar.zst"
@@ -52,13 +53,17 @@ read INSTALLER_DIRECTORY
 if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "calamares-installer" ]; then
     set -o xtrace
     INSTALLER_DIRECTORY="$(dirname -- "$INSTALLER_DIRECTORY")"
+    CALAMARES_INSTALLER_DIRECTORY="$INSTALLER_DIRECTORY/calamares-installer"
+    CALAMARES_BRANDING_DIRECTORY="$INSTALLER_DIRECTORY/calamares-branding"
+    CALAMARES_CONFIGURATION_DIRECTORY="$INSTALLER_DIRECTORY/calamares-configuration"
+    CALAMARES_CORE_DIRECTORY="$INSTALLER_DIRECTORY/calamares-core"
     sudo mkdir -p "$ISO_INSTALLER_DIRECTORY"
     set +o xtrace
 
     echo "Copying the installer files to $ISO_INSTALLER_DIRECTORY..."
     sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-installer" "$ISO_INSTALLER_DIRECTORY"
-    if [ -d "$INSTALLER_DIRECTORY/calamares-branding" ]; then
-        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-branding" "$ISO_INSTALLER_DIRECTORY"
+    if [ -d "$CALAMARES_BRANDING_DIRECTORY" ]; then
+        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_BRANDING_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
     else
         echo ""
         echo "ERROR: Branding directory 'calamares-branding' not found in the parent directory which contains the 'calamares-installer' directory."
@@ -66,8 +71,8 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
         echo ""
         exit 1
     fi
-    if [ -d "$INSTALLER_DIRECTORY/calamares-configuration" ]; then
-        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-configuration" "$ISO_INSTALLER_DIRECTORY"
+    if [ -d "$CALAMARES_CONFIGURATION_DIRECTORY" ]; then
+        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_CONFIGURATION_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
     else
         echo ""
         echo "ERROR: Configuration directory 'calamares-configuration' not found in the parent directory which contains the 'calamares-installer' directory."
@@ -75,8 +80,8 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
         echo ""
         exit 1
     fi
-    if [ -d "$INSTALLER_DIRECTORY/calamares-core" ]; then
-        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-core" "$ISO_INSTALLER_DIRECTORY"
+    if [ -d "$CALAMARES_CORE_DIRECTORY" ]; then
+        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_CORE_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
     else
         echo ""
         echo "ERROR: Core directory 'calamares-core' not found in the parent directory which contains the 'calamares-installer' directory."
@@ -86,42 +91,49 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
     fi
 
     echo "Removing old installer packages from the local repo and adding new ones if they exist..."
-    if ls "$INSTALLER_DIRECTORY/calamares-branding/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
-        set -o xtrace
-        "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-branding"
-        BRANDING_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-branding/scripts/packaging/"*.pkg* | head -n 1)"
-        "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$BRANDING_PACKAGE"
-        set +o xtrace
-    else
+
+    if ! ls "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
         echo ""
-        echo "WARNING: The 'calamares-branding' project was not built into a package already."
-        echo "Look in its 'scripts' directory to find a script that builds its Arch Linux package and then run the script."
+        echo "WARNING: The 'calamares-branding' project was not built into a package already. Attempting to build..."
         echo "" 
-    fi
-    if ls "$INSTALLER_DIRECTORY/calamares-configuration/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
         set -o xtrace
-        "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-configuration"
-        CONFIGURATION_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-configuration/scripts/packaging/"*.pkg* | head -n 1)"
-        "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CONFIGURATION_PACKAGE"
+        sh "$CALAMARES_BRANDING_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
         set +o xtrace
-    else
-        echo ""
-        echo "WARNING: The 'calamares-configuration' project was not built into a package already."
-        echo "Look in its 'scripts' directory to find a script that builds its Arch Linux package and then run the script."
-        echo "" 
     fi
-    if ls "$INSTALLER_DIRECTORY/calamares-core/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+    set -o xtrace
+    "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-branding"
+    BRANDING_PACKAGE="$(ls -t "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
+    "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$BRANDING_PACKAGE"
+    set +o xtrace
+
+    if ! ls "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+        echo ""
+        echo "WARNING: The 'calamares-configuration' project was not built into a package already. Attempting to build..."
+        echo "" 
         set -o xtrace
-        "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-core"
-        CORE_PACKAGE="$(ls -t "$INSTALLER_DIRECTORY/calamares-core/scripts/packaging/"*.pkg* | head -n 1)"
-        "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CORE_PACKAGE"
+        sh "$CALAMARES_CONFIGURATION_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
         set +o xtrace
-    else
-        echo ""
-        echo "WARNING: The 'calamares-core' project was not built into a package already."
-        echo "Look in its 'scripts' directory to find a script that builds its Arch Linux package and then run the script."
-        echo "" 
     fi
+    set -o xtrace
+    "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-configuration"
+    CONFIGURATION_PACKAGE="$(ls -t "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
+    "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CONFIGURATION_PACKAGE"
+    set +o xtrace
+
+    if ! ls "$CALAMARES_CORE_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+        echo ""
+        echo "WARNING: The 'calamares-core' project was not built into a package already. Attempting to build..."
+        echo "" 
+        set -o xtrace
+        sh "$CALAMARES_CORE_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
+        set +o xtrace
+    fi
+    set -o xtrace
+    "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-core"
+    CORE_PACKAGE="$(ls -t "$CALAMARES_CORE_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
+    "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CORE_PACKAGE"
+    set +o xtrace
+
 else
     echo "Skipping the installer... If you entered a path, check if the directory exists and if it is named \"calamares-installer\""
 fi
