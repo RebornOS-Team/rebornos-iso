@@ -92,42 +92,42 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
 
     echo "Removing old installer packages from the local repo and adding new ones if they exist..."
 
-    if ! ls "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
-        echo ""
-        echo "WARNING: The 'calamares-branding' project was not built into a package already. Attempting to build..."
-        echo "" 
-        set -o xtrace
-        sh "$CALAMARES_BRANDING_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
-        set +o xtrace
-    fi
+    # if ! ls "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+    #     echo ""
+    #     echo "WARNING: The 'calamares-branding' project was not built into a package already. Attempting to build..."
+    #     echo "" 
+    set -o xtrace
+    sh "$CALAMARES_BRANDING_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
+    set +o xtrace
+    # fi
     set -o xtrace
     "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-branding"
     BRANDING_PACKAGE="$(ls -t "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
     "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$BRANDING_PACKAGE"
     set +o xtrace
 
-    if ! ls "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
-        echo ""
-        echo "WARNING: The 'calamares-configuration' project was not built into a package already. Attempting to build..."
-        echo "" 
-        set -o xtrace
-        sh "$CALAMARES_CONFIGURATION_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
-        set +o xtrace
-    fi
+    # if ! ls "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+    #     echo ""
+    #     echo "WARNING: The 'calamares-configuration' project was not built into a package already. Attempting to build..."
+    #     echo "" 
+    set -o xtrace
+    sh "$CALAMARES_CONFIGURATION_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
+    set +o xtrace
+    # fi
     set -o xtrace
     "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-configuration"
     CONFIGURATION_PACKAGE="$(ls -t "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
     "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$CONFIGURATION_PACKAGE"
     set +o xtrace
 
-    if ! ls "$CALAMARES_CORE_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
-        echo ""
-        echo "WARNING: The 'calamares-core' project was not built into a package already. Attempting to build..."
-        echo "" 
-        set -o xtrace
-        sh "$CALAMARES_CORE_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
-        set +o xtrace
-    fi
+    # if ! ls "$CALAMARES_CORE_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
+    #     echo ""
+    #     echo "WARNING: The 'calamares-core' project was not built into a package already. Attempting to build..."
+    #     echo "" 
+    set -o xtrace
+    sh "$CALAMARES_CORE_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
+    set +o xtrace
+    # fi
     set -o xtrace
     "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-core"
     CORE_PACKAGE="$(ls -t "$CALAMARES_CORE_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
