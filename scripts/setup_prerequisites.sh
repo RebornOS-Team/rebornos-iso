@@ -45,38 +45,28 @@ echo ""
 printf "%s\n" "${EXTRA_PACKAGES[@]}" | xargs -d '\n' "$PROJECT_DIRECTORY"/scripts/repo-add.sh
 
 echo ""
-echo "(Optional) Specify the path to the central RebornOS installer project (named as \"calamares-installer\"). PRESS ENTER TO SKIP..."
-echo "Example: /home/john/Downloads/calamares-installer"
+echo "(Optional) Specify the path to the central RebornOS installer project (named as \"calamares-helper\"). PRESS ENTER TO SKIP..."
+echo "Example: /home/john/Downloads/calamares-helper"
 echo -n "Path: "
 read INSTALLER_DIRECTORY
-# Checking if the specified directory exists and if it is named "calamares-installer"
-if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "calamares-installer" ]; then
+# Checking if the specified directory exists and if it is named "calamares-helper"
+if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "calamares-helper" ]; then
     set -o xtrace
     INSTALLER_DIRECTORY="$(dirname -- "$INSTALLER_DIRECTORY")"
-    CALAMARES_INSTALLER_DIRECTORY="$INSTALLER_DIRECTORY/calamares-installer"
-    CALAMARES_BRANDING_DIRECTORY="$INSTALLER_DIRECTORY/calamares-branding"
+    CALAMARES_INSTALLER_DIRECTORY="$INSTALLER_DIRECTORY/calamares-helper"
     CALAMARES_CONFIGURATION_DIRECTORY="$INSTALLER_DIRECTORY/calamares-configuration"
     CALAMARES_CORE_DIRECTORY="$INSTALLER_DIRECTORY/calamares-core"
     sudo mkdir -p "$ISO_INSTALLER_DIRECTORY"
     set +o xtrace
 
     echo "Copying the installer files to $ISO_INSTALLER_DIRECTORY..."
-    sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-installer" "$ISO_INSTALLER_DIRECTORY"
-    if [ -d "$CALAMARES_BRANDING_DIRECTORY" ]; then
-        sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_BRANDING_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
-    else
-        echo ""
-        echo "ERROR: Branding directory 'calamares-branding' not found in the parent directory which contains the 'calamares-installer' directory."
-        echo "Please verify that you have followed the instructions in the README for the calamares-installer git repository correctly."
-        echo ""
-        exit 1
-    fi
+    sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$INSTALLER_DIRECTORY/calamares-helper" "$ISO_INSTALLER_DIRECTORY"
     if [ -d "$CALAMARES_CONFIGURATION_DIRECTORY" ]; then
         sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_CONFIGURATION_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
     else
         echo ""
-        echo "ERROR: Configuration directory 'calamares-configuration' not found in the parent directory which contains the 'calamares-installer' directory."
-        echo "Please verify that you have followed the instructions in the README for the calamares-installer git repository correctly."
+        echo "ERROR: Configuration directory 'calamares-configuration' not found in the parent directory which contains the 'calamares-helper' directory."
+        echo "Please verify that you have followed the instructions in the README for the calamares-helper git repository correctly."
         echo ""
         exit 1
     fi
@@ -84,27 +74,13 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
         sudo rsync -abviuP --filter='dir-merge,-n /.gitignore' "$CALAMARES_CORE_DIRECTORY" "$ISO_INSTALLER_DIRECTORY"
     else
         echo ""
-        echo "ERROR: Core directory 'calamares-core' not found in the parent directory which contains the 'calamares-installer' directory."
-        echo "Please verify that you have followed the instructions in the README for the calamares-installer git repository correctly."
+        echo "ERROR: Core directory 'calamares-core' not found in the parent directory which contains the 'calamares-helper' directory."
+        echo "Please verify that you have followed the instructions in the README for the calamares-helper git repository correctly."
         echo ""
         exit 1
     fi
 
     echo "Removing old installer packages from the local repo and adding new ones if they exist..."
-
-    # if ! ls "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
-    #     echo ""
-    #     echo "WARNING: The 'calamares-branding' project was not built into a package already. Attempting to build..."
-    #     echo "" 
-    set -o xtrace
-    sh "$CALAMARES_BRANDING_DIRECTORY/$RELATIVE_PACKAGE_BUILD_SCRIPT"
-    set +o xtrace
-    # fi
-    set -o xtrace
-    "$PROJECT_DIRECTORY"/scripts/repo-remove.sh "calamares-branding"
-    BRANDING_PACKAGE="$(ls -t "$CALAMARES_BRANDING_DIRECTORY/scripts/packaging/"*.pkg* | head -n 1)"
-    "$PROJECT_DIRECTORY"/scripts/repo-add.sh "$BRANDING_PACKAGE"
-    set +o xtrace
 
     # if ! ls "$CALAMARES_CONFIGURATION_DIRECTORY/scripts/packaging/"*.pkg* > /dev/null 2>&1;then
     #     echo ""
@@ -135,7 +111,7 @@ if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "c
     set +o xtrace
 
 else
-    echo "Skipping the installer... If you entered a path, check if the directory exists and if it is named \"calamares-installer\""
+    echo "Skipping the installer... If you entered a path, check if the directory exists and if it is named \"calamares-helper\""
 fi
 echo ""
 
@@ -158,7 +134,6 @@ validate_package_and_edit_list() {
     fi 
 }
 
-validate_package_and_edit_list "calamares-branding"
 validate_package_and_edit_list "calamares-configuration"
 validate_package_and_edit_list "calamares-core"
 
