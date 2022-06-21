@@ -45,7 +45,7 @@ echo ""
 printf "%s\n" "${EXTRA_PACKAGES[@]}" | xargs -d '\n' "$PROJECT_DIRECTORY"/scripts/repo-add.sh
 
 echo ""
-echo "(Optional) Specify the path to the central RebornOS installer project (named as \"calamares-helper\"). PRESS ENTER TO SKIP..."
+echo "(Optional) Specify the path to the RebornOS helper project (named as \"calamares-helper\"). PRESS ENTER TO SKIP..."
 echo "Example: /home/john/Downloads/calamares-helper"
 echo -n "Path: "
 read INSTALLER_DIRECTORY
