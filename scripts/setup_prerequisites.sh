@@ -32,6 +32,7 @@ echo ""
 echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
+refresh-mirrors
 sudo pacman -Sy archlinux-keyring rebornos-keyring
 sudo pacman -S --needed archiso git git-lfs rsync
 yay --answerclean None --answerdiff None --answeredit None --answerupgrade None -S --needed paru-bin "$@"
