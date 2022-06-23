@@ -3,4 +3,6 @@ airootfs/home/rebornos/rebornos-labs/xfce-minimal-iso/repo
 airootfs/home/rebornos/calamares-helper
 airootfs/home/rebornos/calamares-configuration
 airootfs/home/rebornos/calamares-core
+airootfs/etc/pacman.d/mirrorlist
+airootfs/etc/pacman.d/reborn-mirrorlist
 
