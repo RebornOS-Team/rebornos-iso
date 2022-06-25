@@ -5,4 +5,5 @@ airootfs/home/rebornos/calamares-configuration
 airootfs/home/rebornos/calamares-core
 airootfs/etc/pacman.d/mirrorlist
 airootfs/etc/pacman.d/reborn-mirrorlist
+scripts/mkarchiso
 
