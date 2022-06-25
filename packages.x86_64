@@ -359,6 +359,7 @@ qt5-tools
 qt5-webengine
 qt5-xmlpatterns
 qt5ct
+qqc2-desktop-style
 polkit-qt5
 kconfig
 kcoreaddons
