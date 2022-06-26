@@ -354,6 +354,11 @@ rebornos-keyring
 rebornos-mirrorlist
 rebornos-os-release
 
+# ==========
+# Qt theming
+# ==========
+oxygen
+
 # =====================
 # Installer - Calamares
 # =====================
@@ -368,6 +373,7 @@ polkit-qt5
 kconfig
 kcoreaddons
 kdbusaddons
+kwidgetsaddons
 ki18n
 kpackage
 kparts
