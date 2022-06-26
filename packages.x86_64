@@ -281,10 +281,11 @@ linux-headers
 # ========
 xfce4
 xfce4-goodies
-lightdm
+# lightdm
+gdm
 xorg
 hicolor-icon-theme
-lightdm-slick-greeter
+# lightdm-slick-greeter
 
 # --------------
 # Graphics - AMD
