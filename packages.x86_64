@@ -318,6 +318,8 @@ otf-fira-mono
 otf-fira-sans
 packagekit
 pamac-aur
+wget
+curl
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
