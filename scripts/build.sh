@@ -46,7 +46,7 @@ set +o xtrace
 echo ""
 
 if [ "$EXIT_CODE" -ne 0 ]; then
-    read -t 60 -p "\"mkarchiso\" failed. Do you want to try with the Git version? [Y/n]: " -n 1 -r
+    read -t 30 -p "\"mkarchiso\" failed. Do you want to try with the Git version? [Y/n]: " -n 1 -r
     echo ""
     if [ "$REPLY" == "N" ] || [ "$REPLY" == "n" ]; then
         exit 1
