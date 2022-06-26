@@ -5,7 +5,7 @@ PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
 WORK_DIRECTORY=/var/tmp/archiso
 OUTPUT_DIRECTORY="$PROJECT_DIRECTORY"/output
 
-read -p "Do you want to setup prerequisites? [Y/n]: " -n 1 -r
+read -t 15 -p "Do you want to setup prerequisites? [Y/n]: " -n 1 -r
 echo ""
 if [ "$REPLY" == "N" ] || [ "$REPLY" == "n" ]; then
     :
@@ -46,7 +46,7 @@ set +o xtrace
 echo ""
 
 if [ "$EXIT_CODE" -ne 0 ]; then
-    read -p "\"mkarchiso\" failed. Do you want to try with the Git version? [Y/n]: " -n 1 -r
+    read -t 60 -p "\"mkarchiso\" failed. Do you want to try with the Git version? [Y/n]: " -n 1 -r
     echo ""
     if [ "$REPLY" == "N" ] || [ "$REPLY" == "n" ]; then
         exit 1

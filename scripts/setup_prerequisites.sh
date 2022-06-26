@@ -50,7 +50,7 @@ echo ""
 echo "(Optional) Specify the path to the RebornOS helper project (named as \"calamares-helper\"). PRESS ENTER TO SKIP..."
 echo "Example: /home/john/Downloads/calamares-helper"
 echo -n "Path: "
-read INSTALLER_DIRECTORY
+read -t 60 INSTALLER_DIRECTORY
 # Checking if the specified directory exists and if it is named "calamares-helper"
 if [ -d "$INSTALLER_DIRECTORY" ] && [ "$(basename "$INSTALLER_DIRECTORY")" == "calamares-helper" ]; then
     set -o xtrace
