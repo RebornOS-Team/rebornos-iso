@@ -19,6 +19,7 @@
         <value type="int" value="16"/>
         <value type="int" value="15"/>
         <value type="int" value="27"/>
+        <value type="int" value="4"/>
         <value type="int" value="30"/>
         <value type="int" value="2"/>
         <value type="int" value="5"/>
@@ -116,6 +117,11 @@
     <property name="clipman" type="empty">
       <property name="settings" type="empty">
         <property name="show-qr-code" type="bool" value="true"/>
+      </property>
+    </property>
+    <property name="plugin-4" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16564508222.desktop"/>
       </property>
     </property>
   </property>

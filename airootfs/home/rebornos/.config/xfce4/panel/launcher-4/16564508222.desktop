@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RebornOS ISO Welcome Application
+Comment=An application that contains basic links to help one get started on RebornOS as a new user
+Path=/opt/rebornos-iso-welcome
+Exec=rebornos-iso-welcome
+Icon=/opt/rebornos-iso-welcome/media/icons/rebornos_iso_welcome_logo.svg
+Terminal=false
+Categories=System;Utility;Accessibility;GTK;
+Keywords=RebornOS;Welcome;Start;Help;Get Started;
+X-XFCE-Source=file:///usr/share/applications/rebornos-iso-welcome.desktop
