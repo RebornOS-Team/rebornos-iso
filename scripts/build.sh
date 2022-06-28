@@ -38,21 +38,8 @@ echo ""
 echo "Building the ISO image..."
 echo ""
 set -o xtrace
+(cd "$SCRIPT_DIRECTORY" && wget -O "mkarchiso" "https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/archiso/mkarchiso")
 sudo bash "$SCRIPT_DIRECTORY"/mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
 EXIT_CODE="$?"
 set +o xtrace
 
-echo ""
-
-if [ "$EXIT_CODE" -ne 0 ]; then
-    read -t 30 -p "\"mkarchiso\" failed. Do you want to try with the Git version? [Y/n]: " -n 1 -r
-    echo ""
-    if [ "$REPLY" == "N" ] || [ "$REPLY" == "n" ]; then
-        exit 1
-    else
-        set -o xtrace
-        (cd "$SCRIPT_DIRECTORY" && wget -O "mkarchiso" "https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/archiso/mkarchiso") \
-            && sudo bash "$SCRIPT_DIRECTORY"/mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
-        set +o xtrace
-    fi
-fi
