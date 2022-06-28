@@ -281,11 +281,12 @@ linux-headers
 # ========
 xfce4
 xfce4-goodies
-# lightdm
-gdm
+# Enabled using ln -s /usr/lib/systemd/system/lightdm.service airootfs/etc/systemd/system/display-manager.service
+lightdm
+# gdm
 xorg
 hicolor-icon-theme
-# lightdm-slick-greeter
+lightdm-slick-greeter
 
 # --------------
 # Graphics - AMD
