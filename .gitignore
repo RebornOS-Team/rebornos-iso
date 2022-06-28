@@ -1,6 +1,3 @@
 output/
-airootfs/home/rebornos/rebornos-labs
-airootfs/usr/local/share/rebornos-labs
 airootfs/etc/pacman.d/mirrorlist
 airootfs/etc/pacman.d/reborn-mirrorlist
-scripts/mkarchiso

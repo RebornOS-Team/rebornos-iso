@@ -38,8 +38,7 @@ echo ""
 echo "Building the ISO image..."
 echo ""
 set -o xtrace
-# rsync 
-sudo mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY"
+sudo bash "$SCRIPT_DIRECTORY"/mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
 EXIT_CODE="$?"
 set +o xtrace
 
