@@ -33,6 +33,7 @@
       <property name="show-filesystem" type="bool" value="false"/>
       <property name="show-home" type="bool" value="false"/>
     </property>
+    <property name="icon-size" type="uint" value="64"/>
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="603"/>

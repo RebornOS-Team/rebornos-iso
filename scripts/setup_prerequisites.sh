@@ -10,13 +10,13 @@ RELATIVE_PACKAGE_BUILD_SCRIPT="scripts/build_package.sh"
 
 EXTRA_PACKAGES=(
     # "$PROJECT_DIRECTORY/local_repo/refresh-mirrors-0.0.20-1-any.pkg.tar.zst"
-    paru-bin
-    b43-firmware
-    rtl88xxau-aircrack-dkms-git
-    rtl8821ce-dkms-git
-    ckbcomp
-    fastfetch-git
-    hardinfo
+    # paru-bin
+    # b43-firmware
+    # rtl88xxau-aircrack-dkms-git
+    # rtl8821ce-dkms-git
+    # ckbcomp
+    # fastfetch-git
+    # hardinfo
 )
 
 echo "Script directory: $SCRIPT_DIRECTORY"
@@ -35,8 +35,7 @@ echo ""
 set -o xtrace
 refresh-mirrors
 sudo pacman -Sy archlinux-keyring rebornos-keyring
-sudo pacman -S --needed archiso git git-lfs rsync
-yay --answerclean None --answerdiff None --answeredit None --answerupgrade None -S --needed paru-bin "$@"
+sudo pacman -S --needed archiso git git-lfs rsync wget
 git lfs install
 git lfs pull
 set +o xtrace
