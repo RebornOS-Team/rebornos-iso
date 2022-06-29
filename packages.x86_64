@@ -361,7 +361,8 @@ rebornos-os-release
 # ==========
 # Qt theming
 # ==========
-oxygen
+# oxygen
+breeze
 
 # =====================
 # Installer - Calamares
