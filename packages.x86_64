@@ -172,12 +172,17 @@ network-manager-sstp
 # ================
 # Hardware - Other
 # ================
-# xf86-input-mtrack-git
+xf86-input-mtrack-git
 broadcom-wl-dkms
-# ** AUR **
 b43-firmware
-rtl88xxau-aircrack-dkms-git
+rtl8723bu-git-dkms
+rtl8812au-dkms-git
+rtl8814au-aircrack-dkms-git
+rtl8814au-dkms-git
 rtl8821ce-dkms-git
+rtl8821cu-dkms-git
+rtl88x2bu-dkms-git
+rtl88xxau-aircrack-dkms-git
 
 # =========
 # Diagnosis
