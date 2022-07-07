@@ -401,5 +401,6 @@ udisks2
 yaml-cpp
 polkit
 ckbcomp
+python-yaml
 calamares-configuration
 calamares-core
