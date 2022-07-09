@@ -313,6 +313,7 @@ nvidia-utils
 # ====
 # Misc 
 # ====
+accountsservice
 # yay
 paru-bin
 base-devel
