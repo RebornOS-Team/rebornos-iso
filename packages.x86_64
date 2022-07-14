@@ -172,7 +172,7 @@ network-manager-sstp
 # ================
 # Hardware - Other
 # ================
-xf86-input-mtrack-git
+# xf86-input-mtrack-git # Conflicts with xorg-drivers
 broadcom-wl-dkms
 b43-firmware
 rtl8723bu-git-dkms
