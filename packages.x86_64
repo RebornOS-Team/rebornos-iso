@@ -177,7 +177,7 @@ broadcom-wl-dkms
 b43-firmware
 rtl8723bu-git-dkms
 rtl8812au-dkms-git
-rtl8814au-aircrack-dkms-git
+# rtl8814au-aircrack-dkms-git # Conflicts with rtl8814au-dkms-git
 rtl8814au-dkms-git
 rtl8821ce-dkms-git
 rtl8821cu-dkms-git
