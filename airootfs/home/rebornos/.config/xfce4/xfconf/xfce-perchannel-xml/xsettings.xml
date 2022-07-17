@@ -3,7 +3,7 @@
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
     <property name="ThemeName" type="string" value="Adwaita-dark"/>
-    <property name="IconThemeName" type="string" value="Adwaita"/>
+    <property name="IconThemeName" type="string" value="bloom-dark"/>
     <property name="DoubleClickTime" type="empty"/>
     <property name="DoubleClickDistance" type="empty"/>
     <property name="DndDragThreshold" type="empty"/>
@@ -23,8 +23,8 @@
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="bool" value="false"/>
     <property name="ColorPalette" type="empty"/>
-    <property name="FontName" type="string" value="Fira Sans 10"/>
-    <property name="MonospaceFontName" type="string" value="Fira Mono 10"/>
+    <property name="FontName" type="string" value="FreeSans 10"/>
+    <property name="MonospaceFontName" type="string" value="FreeMono 10"/>
     <property name="IconSizes" type="empty"/>
     <property name="KeyThemeName" type="empty"/>
     <property name="ToolbarStyle" type="empty"/>

@@ -313,21 +313,21 @@ nvidia-utils
 # ====
 # Misc 
 # ====
-accountsservice
-# yay
-paru-bin
+yay
+# paru-bin
 base-devel
 nano-syntax-highlighting
-fastfetch-git
 perl
 python
 firefox
-otf-fira-mono
-otf-fira-sans
 packagekit
 pamac-aur
 wget
 curl
+accountsservice
+fastfetch-git
+gnu-free-fonts
+deepin-icon-theme
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
