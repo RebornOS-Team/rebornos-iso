@@ -327,6 +327,7 @@ curl
 accountsservice
 fastfetch-git
 gnu-free-fonts
+otf-fira-mono
 deepin-icon-theme
 # firefox-extension-arch-search
 # xdg-utils
