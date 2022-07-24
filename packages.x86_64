@@ -329,7 +329,7 @@ fastfetch-git
 gnu-free-fonts
 otf-fira-mono
 deepin-icon-theme
-grub2-theme-vimix-git
+# grub2-theme-vimix-git
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
