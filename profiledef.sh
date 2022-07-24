@@ -23,7 +23,6 @@ file_permissions=(
   ["/etc/NetworkManager/dispatcher.d/refresh-repos.sh"]="0:0:755"
   ["/usr/bin/refresh-package-databases.sh"]="0:0:755"
   ["/usr/bin/upload-logs.sh"]="0:0:755"
-  ["/usr/bin/upload-logs"]="0:0:755"
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
