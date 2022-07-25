@@ -24,7 +24,7 @@
     <property name="CanChangeAccels" type="bool" value="false"/>
     <property name="ColorPalette" type="empty"/>
     <property name="FontName" type="string" value="FreeSans 10"/>
-    <property name="MonospaceFontName" type="string" value="Fira Mono 11"/>
+    <property name="MonospaceFontName" type="string" value="Fira Mono 10"/>
     <property name="IconSizes" type="empty"/>
     <property name="KeyThemeName" type="empty"/>
     <property name="ToolbarStyle" type="empty"/>
