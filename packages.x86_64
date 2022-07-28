@@ -125,6 +125,18 @@ xfsprogs
 xl2tpd
 zsh
 
+# =====
+# Audio
+# =====
+pipewire
+# lib32-pipewire
+wireplumber
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+# lib32-pipewire-jack
+pavucontrol
+
 # =========
 # VM - QEMU
 # =========
@@ -321,6 +333,8 @@ perl
 python
 firefox
 packagekit
+xdg-desktop-portal
+xdg-desktop-portal-gtk
 pamac-aur
 wget
 curl
