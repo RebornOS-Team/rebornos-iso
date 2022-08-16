@@ -12,7 +12,7 @@ In order to download the source code to your local computer for testing, or for 
 ### HTTPS
 
 ```bash
-git clone https://gitlab.com/rebornos-labs/deployment/xfce-minimal-iso.git   
+git clone https://github.com/RebornOS-Developers/xfce-minimal-iso.git 
 ```
 
 OR
@@ -20,7 +20,7 @@ OR
 ### SSH
 
 ```bash
-git clone git@gitlab.com:rebornos-labs/deployment/xfce-minimal-iso.git
+git clone git@github.com:RebornOS-Developers/xfce-minimal-iso.git
 ```
 
 ## (Optional) Clean-up old packages and directories
