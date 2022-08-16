@@ -339,7 +339,7 @@ pamac-aur
 wget
 curl
 accountsservice
-fastfetch-git
+fastfetch
 gnu-free-fonts
 otf-fira-mono
 deepin-icon-theme

@@ -38,6 +38,7 @@ sudo pacman -R rtl88xxau-aircrack-dkms-git
 sudo pacman -R rtl8821ce-dkms-git
 sudo pacman -R ckbcomp
 sudo pacman -R fastfetch-git
+sudo pacman -R fastfetch
 
 set +o xtrace
 
