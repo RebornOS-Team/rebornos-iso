@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="rebornos_labs_xfce_minimal"
-iso_label="ROSL_$(date +%Y%m)"
+iso_name="rebornos_xfce_minimal"
+iso_label="ROS_$(date +%Y%m)"
 iso_publisher="RebornOS <https://www.rebornos.org>"
 iso_application="RebornOS Live/Rescue ISO"
 iso_version="$(date +%Y.%m.%d)"
