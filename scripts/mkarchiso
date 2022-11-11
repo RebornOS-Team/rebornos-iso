@@ -3,10 +3,16 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -e -u
+shopt -s extglob
 
 # Control the environment
 umask 0022
 export LC_ALL="C.UTF-8"
+if [[ -v LANGUAGE ]]; then
+    # LC_ALL=C.UTF-8, unlike LC_ALL=C, does not override LANGUAGE.
+    # See https://sourceware.org/bugzilla/show_bug.cgi?id=16621 and https://savannah.gnu.org/bugs/?62815
+    unset LANGUAGE
+fi
 [[ -v SOURCE_DATE_EPOCH ]] || printf -v SOURCE_DATE_EPOCH '%(%s)T' -1
 export SOURCE_DATE_EPOCH
 
@@ -37,7 +43,6 @@ bootmodes=()
 airootfs_image_type=""
 airootfs_image_tool_options=()
 cert_list=()
-sign_netboot_artifacts=""
 declare -A file_permissions=()
 efibootimg=""
 efiboot_files=()
@@ -88,10 +93,11 @@ usage: ${app_name} [options] <profile_dir>
                       Default: '${iso_label}'
      -P <publisher>   Set the ISO publisher
                       Default: '${iso_publisher}'
-     -c [cert ..]     Provide certificates for codesigning of netboot artifacts
+     -c [cert ..]     Provide certificates for codesigning of netboot artifacts as
+                      well as the rootfs artifact.
                       Multiple files are provided as quoted, space delimited list.
                       The first file is considered as the signing certificate,
-                      the second as the key.
+                      the second as the key and the third as the optional certificate authority.
      -g <gpg_key>     Set the PGP key ID to be used for signing the rootfs image.
                       Passed to gpg as the value for --default-key
      -G <mbox>        Set the PGP signer (must include an email address)
@@ -244,14 +250,11 @@ _mkchecksum() {
 }
 
 # GPG sign the root file system image.
-_mksignature() {
-    local airootfs_image_filename gpg_options=()
-    _msg_info "Signing rootfs image..."
-    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
-        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
-    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
-        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
-    fi
+_mk_pgp_signature() {
+    local gpg_options=()
+    local airootfs_image_filename="${1}"
+    _msg_info "Signing rootfs image using GPG..."
+
     rm -f -- "${airootfs_image_filename}.sig"
     # Add gpg sender option if the value is provided
     [[ -z "${gpg_sender}" ]] || gpg_options+=('--sender' "${gpg_sender}")
@@ -336,6 +339,15 @@ _make_packages() {
         exec {ARCHISO_GNUPG_FD}<>"${work_dir}/pubkey.gpg"
         export ARCHISO_GNUPG_FD
     fi
+    if [[ -v cert_list[0] ]]; then
+        exec {ARCHISO_TLS_FD}<>"${cert_list[0]}"
+        export ARCHISO_TLS_FD
+    fi
+    if [[ -v cert_list[2] ]]; then
+        exec {ARCHISO_TLSCA_FD}<>"${cert_list[2]}"
+        export ARCHISO_TLSCA_FD
+    fi
+
 
     # Unset TMPDIR to work around https://bugs.archlinux.org/task/70580
     if [[ "${quiet}" = "y" ]]; then
@@ -344,6 +356,14 @@ _make_packages() {
         env -u TMPDIR pacstrap -C "${work_dir}/${buildmode}.pacman.conf" -c -G -M -- "${pacstrap_dir}" "${buildmode_pkg_list[@]}"
     fi
 
+    if [[ -v cert_list[0] ]]; then
+        exec {ARCHISO_TLS_FD}<&-
+        unset ARCHISO_TLS_FD
+    fi
+    if [[ -v cert_list[2] ]]; then
+        exec {ARCHISO_TLSCA_FD}<&-
+        unset ARCHISO_TLSCA_FD
+    fi
     if [[ -n "${gpg_key}" ]]; then
         exec {ARCHISO_GNUPG_FD}<&-
         unset ARCHISO_GNUPG_FD
@@ -524,18 +544,44 @@ _make_efibootimg() {
     mmd -i "${efibootimg}" ::/EFI ::/EFI/BOOT
 }
 
-# Copy the grub.cfg file in efiboot.img which is used by both IA32 UEFI and x64 UEFI.
-_make_efibootimg_grubcfg() {
-    mcopy -i "${efibootimg}" \
-        "${work_dir}/grub.cfg" ::/EFI/BOOT/grub.cfg
+# Copy GRUB files to efiboot.img which is used by both IA32 UEFI and x64 UEFI.
+_make_common_bootmode_grub_copy_to_efibootimg() {
+    local files_to_copy=()
+
+    files_to_copy+=("${work_dir}/grub/"*)
+    if compgen -G "${profile}/grub/!(*.cfg)" &> /dev/null; then
+        files_to_copy+=("${profile}/grub/"!(*.cfg))
+    fi
+    mcopy -i "${efibootimg}" "${files_to_copy[@]}" ::/EFI/BOOT/
 }
 
-_make_bootmode_uefi-ia32.grub.esp() {
+# Copy GRUB files to efiboot.img which is used by both IA32 UEFI and x64 UEFI.
+_make_common_bootmode_grub_copy_to_isofs() {
+    local files_to_copy=()
+
+    files_to_copy+=("${work_dir}/grub/"*)
+    if compgen -G "${profile}/grub/!(*.cfg)" &> /dev/null; then
+        files_to_copy+=("${profile}/grub/"!(*.cfg))
+    fi
+    install -m 0644 -- "${files_to_copy[@]}" "${isofs_dir}/EFI/BOOT/"
+}
+
+# Prepare GRUB configuration files
+_make_common_bootmode_grub_cfg(){
+    local _cfg
+
+    install -d -- "${work_dir}/grub"
+
     # Fill GRUB configuration files
-    sed "s|%ARCHISO_LABEL%|${iso_label}|g;
-         s|%INSTALL_DIR%|${install_dir}|g;
-         s|%ARCH%|${arch}|g" \
-        "${profile}/grub/grub.cfg" > "${work_dir}/grub.cfg"
+    for _cfg in "${profile}/grub/"*'.cfg'; do
+        sed "s|%ARCHISO_LABEL%|${iso_label}|g;
+             s|%INSTALL_DIR%|${install_dir}|g;
+             s|%ARCH%|${arch}|g" \
+             "${_cfg}" > "${work_dir}/grub/${_cfg##*/}"
+    done
+    # Add all GRUB files to the list of files used to calculate the required FAT image size.
+    efiboot_files+=("${work_dir}/grub/"
+                    "${profile}/grub/"!(*.cfg))
 
     IFS='' read -r -d '' grubembedcfg <<'EOF' || true
 if ! [ -d "$cmdpath" ]; then
@@ -548,13 +594,27 @@ fi
 configfile "${cmdpath}/grub.cfg"
 EOF
     printf '%s\n' "$grubembedcfg" > "${work_dir}/grub-embed.cfg"
+}
+
+_make_bootmode_uefi-ia32.grub.esp() {
+    local grubmodules=()
+
+    # Prepare configuration files
+    _run_once _make_common_bootmode_grub_cfg
 
     # Create EFI binary
+    # Module list from https://bugs.archlinux.org/task/71382#comment202911
+    grubmodules=(all_video at_keyboard boot btrfs cat chain configfile echo efifwsetup efinet ext2 f2fs fat font \
+                 gfxmenu gfxterm gzio halt hfsplus iso9660 jpeg keylayouts linux loadenv loopback lsefi lsefimmap \
+                 minicmd normal part_apple part_gpt part_msdos png read reboot regexp search search_fs_file \
+                 search_fs_uuid search_label serial sleep tpm usb usbserial_common usbserial_ftdi usbserial_pl2303 \
+                 usbserial_usbdebug video xfs zstd)
     grub-mkstandalone -O i386-efi \
-                      --modules="part_gpt part_msdos fat iso9660" \
+                      --modules="${grubmodules[*]}" \
                       --locales="en@quot" \
                       --themes="" \
                       --sbat=/usr/share/grub/sbat.csv \
+                      --disable-shim-lock \
                       -o "${work_dir}/BOOTIA32.EFI" "boot/grub/grub.cfg=${work_dir}/grub-embed.cfg"
     # Add GRUB to the list of files used to calculate the required FAT image size.
     efiboot_files+=("${work_dir}/BOOTIA32.EFI"
@@ -566,22 +626,19 @@ EOF
     elif [[ " ${bootmodes[*]} " =~ uefi-x64.grub.esp ]]; then
         _run_once _make_bootmode_uefi-x64.grub.esp
     else
-        efiboot_imgsize="$(du -bc "${efiboot_files[@]}" \
-            2>/dev/null | awk 'END { print $1 }')"
+        efiboot_imgsize="$(du -bcs -- "${efiboot_files[@]}" 2>/dev/null | awk 'END { print $1 }')"
         # Create a FAT image for the EFI system partition
         _make_efibootimg "$efiboot_imgsize"
     fi
 
     # Copy GRUB EFI binary to the default/fallback boot path
-    mcopy -i "${efibootimg}" \
-        "${work_dir}/BOOTIA32.EFI" ::/EFI/BOOT/BOOTIA32.EFI
+    mcopy -i "${efibootimg}" "${work_dir}/BOOTIA32.EFI" ::/EFI/BOOT/BOOTIA32.EFI
 
-    # Copy GRUB configuration files
-    _run_once _make_efibootimg_grubcfg
+    # Copy GRUB files
+    _run_once _make_common_bootmode_grub_copy_to_efibootimg
 
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ]]; then
-        mcopy -i "${efibootimg}" \
-            "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ::/shellia32.efi
+        mcopy -i "${efibootimg}" "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ::/shellia32.efi
     fi
 
     _msg_info "Done! GRUB set up for UEFI booting successfully."
@@ -593,6 +650,9 @@ _make_bootmode_uefi-ia32.grub.eltorito() {
     # uefi-ia32.grub.eltorito has the same requirements as uefi-ia32.grub.esp
     _run_once _make_bootmode_uefi-ia32.grub.esp
 
+    # Prepare configuration files
+    _run_once _make_common_bootmode_grub_cfg
+
     # Additionally set up systemd-boot in ISO 9660. This allows creating a medium for the live environment by using
     # manual partitioning and simply copying the ISO 9660 file system contents.
     # This is not related to El Torito booting and no firmware uses these files.
@@ -600,66 +660,56 @@ _make_bootmode_uefi-ia32.grub.eltorito() {
     install -d -m 0755 -- "${isofs_dir}/EFI/BOOT"
 
     # Copy GRUB EFI binary to the default/fallback boot path
-    install -m 0644 -- "${work_dir}/BOOTIA32.EFI" \
-        "${isofs_dir}/EFI/BOOT/BOOTIA32.EFI"
+    install -m 0644 -- "${work_dir}/BOOTIA32.EFI" "${isofs_dir}/EFI/BOOT/BOOTIA32.EFI"
 
     # Copy GRUB configuration files
-    install -m 0644 -- "${work_dir}/grub.cfg" "${isofs_dir}/EFI/BOOT/grub.cfg"
+    _run_once _make_common_bootmode_grub_copy_to_isofs
 
     # edk2-shell based UEFI shell
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ]]; then
-        install -m 0644 -- "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" \
-                           "${isofs_dir}/shellia32.efi"
+        install -m 0644 -- "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" "${isofs_dir}/shellia32.efi"
     fi
 
     _msg_info "Done!"
 }
 
 _make_bootmode_uefi-x64.grub.esp() {
-    # Fill Grub configuration files
-    sed "s|%ARCHISO_LABEL%|${iso_label}|g;
-         s|%INSTALL_DIR%|${install_dir}|g;
-         s|%ARCH%|${arch}|g" \
-        "${profile}/grub/grub.cfg" > "${work_dir}/grub.cfg"
+    local grubmodules=()
 
-    IFS='' read -r -d '' grubembedcfg <<'EOF' || true
-if ! [ -d "$cmdpath" ]; then
-    # On some firmware, GRUB has a wrong cmdpath when booted from an optical disc.
-    # https://gitlab.archlinux.org/archlinux/archiso/-/issues/183
-    if regexp --set=1:isodevice '^(\([^)]+\))\/?[Ee][Ff][Ii]\/[Bb][Oo][Oo][Tt]\/?$' "$cmdpath"; then
-        cmdpath="${isodevice}/EFI/BOOT"
-    fi
-fi
-configfile "${cmdpath}/grub.cfg"
-EOF
-    printf '%s\n' "$grubembedcfg" > "${work_dir}/grub-embed.cfg"
+    # Prepare configuration files
+    _run_once _make_common_bootmode_grub_cfg
 
     # Create EFI binary
+    # Module list from https://bugs.archlinux.org/task/71382#comment202911
+    grubmodules=(all_video at_keyboard boot btrfs cat chain configfile echo efifwsetup efinet ext2 f2fs fat font \
+                 gfxmenu gfxterm gzio halt hfsplus iso9660 jpeg keylayouts linux loadenv loopback lsefi lsefimmap \
+                 minicmd normal part_apple part_gpt part_msdos png read reboot regexp search search_fs_file \
+                 search_fs_uuid search_label serial sleep tpm usb usbserial_common usbserial_ftdi usbserial_pl2303 \
+                 usbserial_usbdebug video xfs zstd)
     grub-mkstandalone -O x86_64-efi \
-                      --modules="part_gpt part_msdos fat iso9660" \
+                      --modules="${grubmodules[*]}" \
                       --locales="en@quot" \
                       --themes="" \
                       --sbat=/usr/share/grub/sbat.csv \
+                      --disable-shim-lock \
                       -o "${work_dir}/BOOTx64.EFI" "boot/grub/grub.cfg=${work_dir}/grub-embed.cfg"
     # Add GRUB to the list of files used to calculate the required FAT image size.
     efiboot_files+=("${work_dir}/BOOTx64.EFI"
                     "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi")
 
-    efiboot_imgsize="$(du -bc "${efiboot_files[@]}" \
-        2>/dev/null | awk 'END { print $1 }')"
+    efiboot_imgsize="$(du -bcs -- "${efiboot_files[@]}" 2>/dev/null | awk 'END { print $1 }')"
 
     # Create a FAT image for the EFI system partition
     _make_efibootimg "$efiboot_imgsize"
 
-    # Copy grub EFI binary to the default/fallback boot path
-    mcopy -i "${efibootimg}" \
-        "${work_dir}/BOOTx64.EFI" ::/EFI/BOOT/BOOTx64.EFI
+    # Copy GRUB EFI binary to the default/fallback boot path
+    mcopy -i "${efibootimg}" "${work_dir}/BOOTx64.EFI" ::/EFI/BOOT/BOOTx64.EFI
 
-    _run_once _make_efibootimg_grubcfg
+    # Copy GRUB files
+    _run_once _make_common_bootmode_grub_copy_to_efibootimg
 
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ]]; then
-        mcopy -i "${efibootimg}" \
-            "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ::/shellx64.efi
+        mcopy -i "${efibootimg}" "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ::/shellx64.efi
     fi
 
     _msg_info "Done! GRUB set up for UEFI booting successfully."
@@ -671,6 +721,9 @@ _make_bootmode_uefi-x64.grub.eltorito() {
     # uefi-x64.grub.eltorito has the same requirements as uefi-x64.grub.esp
     _run_once _make_bootmode_uefi-x64.grub.esp
 
+    # Prepare configuration files
+    _run_once _make_common_bootmode_grub_cfg
+
     # Additionally set up systemd-boot in ISO 9660. This allows creating a medium for the live environment by using
     # manual partitioning and simply copying the ISO 9660 file system contents.
     # This is not related to El Torito booting and no firmware uses these files.
@@ -678,11 +731,10 @@ _make_bootmode_uefi-x64.grub.eltorito() {
     install -d -m 0755 -- "${isofs_dir}/EFI/BOOT"
 
     # Copy GRUB EFI binary to the default/fallback boot path
-    install -m 0644 -- "${work_dir}/BOOTx64.EFI" \
-        "${isofs_dir}/EFI/BOOT/BOOTx64.EFI"
+    install -m 0644 -- "${work_dir}/BOOTx64.EFI" "${isofs_dir}/EFI/BOOT/BOOTx64.EFI"
 
-    # Copy GRUB configuration files
-    install -m 0644 -- "${work_dir}/grub.cfg" "${isofs_dir}/EFI/BOOT"
+    # Copy GRUB files
+    _run_once _make_common_bootmode_grub_copy_to_isofs
 
     # edk2-shell based UEFI shell
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ]]; then
@@ -710,7 +762,7 @@ _make_bootmode_uefi-x64.systemd-boot.esp() {
                     "${pacstrap_dir}/boot/vmlinuz-"*
                     "${pacstrap_dir}/boot/initramfs-"*".img"
                     "${_available_ucodes[@]}")
-    efiboot_imgsize="$(du -bc "${efiboot_files[@]}" \
+    efiboot_imgsize="$(du -bcs -- "${efiboot_files[@]}" \
         2>/dev/null | awk 'END { print $1 }')"
     # Create a FAT image for the EFI system partition
     _make_efibootimg "$efiboot_imgsize"
@@ -960,8 +1012,18 @@ _validate_requirements_bootmode_uefi-x64.grub.eltorito() {
 _prepare_airootfs_image() {
     _run_once "_mkairootfs_${airootfs_image_type}"
     _mkchecksum
+
+    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
+    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
+    fi
+
     if [[ -n "${gpg_key}" ]]; then
-        _mksignature
+        _mk_pgp_signature "${airootfs_image_filename}"
+    fi
+    if [[ -v cert_list ]]; then
+        _cms_sign_artifact "${airootfs_image_filename}"
     fi
 }
 
@@ -972,6 +1034,32 @@ _export_netboot_artifacts() {
     cp -a -- "${isofs_dir}/${install_dir}/" "${out_dir}/"
     _msg_info "Done!"
     du -hs -- "${out_dir}/${install_dir}"
+}
+
+_cms_sign_artifact() {
+    local artifact="${1}"
+    local openssl_flags=(
+        "-sign"
+        "-binary"
+        "-nocerts"
+        "-noattr"
+        "-outform" "DER" "-out" "${artifact}.cms.sig"
+        "-in" "${artifact}"
+        "-signer" "${cert_list[0]}"
+        "-inkey" "${cert_list[1]}"
+    )
+
+    if (( ${#cert_list[@]} > 2 )); then
+        openssl_flags+=("-certfile" "${cert_list[2]}")
+    fi
+
+    _msg_info "Signing ${artifact} image using openssl cms..."
+
+    rm -f -- "${artifact}.cms.sig"
+
+    openssl cms "${openssl_flags[@]}"
+
+    _msg_info "Done!"
 }
 
 # sign build artifacts for netboot
@@ -985,7 +1073,8 @@ _sign_netboot_artifacts() {
             _files_to_sign+=("${_dir}${_file}")
         fi
     done
-    for _file in "${_files_to_sign[@]}" "${_dir}${arch}/vmlinuz-"* "${_dir}${arch}/initramfs-"*.img; do
+    for _file in "${_files_to_sign[@]}" "${_dir}${arch}/vmlinuz-"!(*.sig) "${_dir}${arch}/initramfs-"*.img; do
+        rm -f -- "${_file}".ipxe.sig
         openssl cms \
             -sign \
             -binary \
@@ -1077,6 +1166,26 @@ _validate_common_requirements_buildmode_iso_netboot() {
         _msg_error "Packages file '${packages}' does not exist." 0
     fi
 
+    if [[ -v cert_list ]]; then
+        # Check if the certificate files exist
+        for _cert in "${cert_list[@]}"; do
+            if [[ ! -e "${_cert}" ]]; then
+                (( validation_error=validation_error+1 ))
+                _msg_error "File '${_cert}' does not exist." 0
+            fi
+        done
+        # Check if there are at least three certificate files to sign netboot and rootfs.
+        if (( ${#cert_list[@]} < 2 )); then
+            (( validation_error=validation_error+1 ))
+            _msg_error "Two certificates are required for codesigning netboot artifacts, but '${cert_list[*]}' is provided." 0
+        fi
+
+        if ! command -v openssl &> /dev/null; then
+            (( validation_error=validation_error+1 ))
+            _msg_error "Validating build mode '${_buildmode}': openssl is not available on this host. Install 'openssl'!" 0
+        fi
+    fi
+
     # Check if the specified airootfs_image_type is supported
     if typeset -f "_mkairootfs_${airootfs_image_type}" &> /dev/null; then
         if typeset -f "_validate_requirements_airootfs_image_type_${airootfs_image_type}" &> /dev/null; then
@@ -1118,31 +1227,8 @@ _validate_requirements_buildmode_iso() {
 }
 
 _validate_requirements_buildmode_netboot() {
-    local _override_cert_list=()
-
-    if [[ "${sign_netboot_artifacts}" == "y" ]]; then
-        # Check if the certificate files exist
-        for _cert in "${cert_list[@]}"; do
-            if [[ -e "${_cert}" ]]; then
-                _override_cert_list+=("$(realpath -- "${_cert}")")
-            else
-                (( validation_error=validation_error+1 ))
-                _msg_error "File '${_cert}' does not exist." 0
-            fi
-        done
-        cert_list=("${_override_cert_list[@]}")
-        # Check if there are at least two certificate files
-        if (( ${#cert_list[@]} < 2 )); then
-            (( validation_error=validation_error+1 ))
-            _msg_error "Two certificates are required for codesigning, but '${cert_list[*]}' is provided." 0
-        fi
-    fi
     _validate_common_requirements_buildmode_iso_netboot
     _validate_common_requirements_buildmode_all
-    if ! command -v openssl &> /dev/null; then
-        (( validation_error=validation_error+1 ))
-        _msg_error "Validating build mode '${_buildmode}': openssl is not available on this host. Install 'openssl'!" 0
-    fi
 }
 
 # SYSLINUX El Torito
@@ -1503,10 +1589,7 @@ _set_overrides() {
     fi
     [[ ! -v override_gpg_key ]] || gpg_key="$override_gpg_key"
     [[ ! -v override_gpg_sender ]] || gpg_sender="$override_gpg_sender"
-    if [[ -v override_cert_list ]]; then
-        sign_netboot_artifacts="y"
-    fi
-    [[ ! -v override_cert_list ]] || cert_list+=("${override_cert_list[@]}")
+    [[ ! -v override_cert_list ]] || mapfile -t cert_list < <(realpath -- "${override_cert_list[@]}")
     if [[ -v override_quiet ]]; then
         quiet="$override_quiet"
     elif [[ -z "$quiet" ]]; then
@@ -1552,6 +1635,11 @@ _make_version() {
         [[ ! -e "${_os_release}" ]] || sed -i '/^IMAGE_ID=/d;/^IMAGE_VERSION=/d' "${_os_release}"
         printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >> "${_os_release}"
     fi
+
+    # Touch /usr/lib/clock-epoch to give another hint on date and time
+    # for systems with screwed or broken RTC.
+    touch -m -d"@${SOURCE_DATE_EPOCH}" -- "${pacstrap_dir}/usr/lib/clock-epoch"
+
     _msg_info "Done!"
 }
 
@@ -1632,8 +1720,16 @@ _build_buildmode_netboot() {
     local run_once_mode="${buildmode}"
 
     _build_iso_base
+
+    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
+    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
+    fi
+
     if [[ -v cert_list ]]; then
         _run_once _sign_netboot_artifacts
+        _cms_sign_artifact "${airootfs_image_filename}"
     fi
     _run_once _export_netboot_artifacts
 }
