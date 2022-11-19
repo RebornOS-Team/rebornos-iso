@@ -300,6 +300,7 @@ xfce4-goodies
 lightdm
 # gdm
 xorg
+noto-fonts-emoji
 hicolor-icon-theme
 lightdm-slick-greeter
 
