@@ -15,7 +15,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
       - name: Build the ISO
-        run: sh build.sh
+        run: sh scripts/build.sh
       - name: Upload the ISO artifact
         uses: actions/upload-artifact@v3
         with: 
