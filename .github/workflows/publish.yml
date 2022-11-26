@@ -7,14 +7,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: download_iso_artifact_step
+      - id: download_iso_artifact_step
+        name: Download ISO Artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build.yml
           workflow_conclusion: success
           branch: main
           name: built-iso
-      - name: create_release_step
+        run: ls -ltr .
+      - id: create_release_step
+        name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
@@ -23,3 +26,13 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: true
           prerelease: true
+      - id: upload_release_asset_step
+        name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./built-iso.zip
+          asset_name: built-iso.zip
+          asset_content_type: application/zip

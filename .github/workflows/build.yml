@@ -12,13 +12,17 @@ jobs:
         - 80
       options: --privileged
     steps:
-      - name: init_docker_step
+      - id: init_docker_step
+        name: Initialize Docker Container        
         run: sh /usr/bin/init-rebornos-docker.sh
-      - name: checkout_repository_step
+      - id: checkout_repository_step
+        name: Checkout Git Repository
         uses: actions/checkout@v3
-      - name: build_iso_step
+      - id: build_iso_step
+        name: Build the ISO
         run: sh scripts/build.sh              
-      - name: upload_iso_artifact_step
+      - id: upload_iso_artifact_step
+        name: Upload the ISO Artifact
         uses: actions/upload-artifact@v3
         with: 
           name: built-iso
