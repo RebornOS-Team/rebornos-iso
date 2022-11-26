@@ -12,13 +12,13 @@ jobs:
       ports:
         - 80
     steps:
-      - name: Checkout the repository
+      - name: init_docker_step
+        run: sh /usr/bin/init-rebornos-docker.sh
+      - name: checkout_repository_step
         uses: actions/checkout@v3
-      - name: Build the ISO
-        run: |
-          sh /usr/bin/init-rebornos-docker.sh \
-          && sh scripts/build.sh
-      - name: Upload the ISO artifact
+      - name: build_iso_step
+        run: sh scripts/build.sh              
+      - name: upload_iso_artifact_step
         uses: actions/upload-artifact@v3
         with: 
           name: built-iso
