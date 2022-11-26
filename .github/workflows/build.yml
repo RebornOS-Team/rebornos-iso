@@ -1,0 +1,18 @@
+name: Build
+run-name: ${{ github.actor }} triggered build
+on: 
+  workflow_call
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: rebornos/rebornos:latest
+      ports:
+        - 80
+    steps:
+      - name: Initialize the RebornOS container
+        run: sh init-rebornos-docker.sh
+      - name: Build the ISO
+        run: Install git
+
+
