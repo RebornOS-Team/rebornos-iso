@@ -15,9 +15,9 @@ jobs:
           workflow_conclusion: success
           branch: main
           name: built-iso
-      - id: display_artifacts_step
-        name: Display the downloaded Artifacts
-        run: ls -ltr .
+      # - id: display_artifacts_step
+      #   name: Display the downloaded Artifacts
+      #   run: ls -ltr .
       - id: create_release_step
         name: Create Release
         uses: actions/create-release@v1
