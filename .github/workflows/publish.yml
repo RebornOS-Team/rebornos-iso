@@ -15,6 +15,8 @@ jobs:
           workflow_conclusion: success
           branch: main
           name: built-iso
+      - id: display_artifacts_step
+        name: Display the downloaded Artifacts
         run: ls -ltr .
       - id: create_release_step
         name: Create Release
@@ -32,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release_step.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: ./rebornos*.iso
           asset_name: rebornos-xfce-minimal.iso
           asset_content_type: application/ISO
