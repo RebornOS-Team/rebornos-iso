@@ -5,7 +5,7 @@ on:
   - workflow_call
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - id: download_iso_artifact_step
         name: Download ISO Artifact
