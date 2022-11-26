@@ -1,13 +1,25 @@
-name: Test run v2
-
+name: Build
+run-name: ${{ github.actor }} triggered a build
+# on: 
+#   workflow_call
 on:
-  workflow_dispatch:
-
+  workflow_dispatch
 jobs:
-  test:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: rebornos/rebornos:latest
+      ports:
+        - 80
     steps:
-      - name: Show environment v2
-        run: env | grep ^GITHUB
-      - name: Show ref v2
-        run: echo "===============> Version from $GITHUB_REF"
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Build the ISO
+        run: sh build.sh
+      - name: Upload the ISO artifact
+        uses: actions/upload-artifact@v3
+        with: 
+          name: built-iso
+          path: output/rebornos*.iso
+
+
