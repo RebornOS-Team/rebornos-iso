@@ -15,7 +15,9 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
       - name: Build the ISO
-        run: sh scripts/build.sh
+        run: |
+          sh /usr/bin/init-rebornos-docker.sh \
+          && sh scripts/build.sh
       - name: Upload the ISO artifact
         uses: actions/upload-artifact@v3
         with: 
