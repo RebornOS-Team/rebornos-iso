@@ -1,11 +1,25 @@
-# name: Publish
-# run-name: ${{ github.actor }} triggered build and publish
-# on: 
-#   workflow_dispatch:
-#     inputs: 
-#       tag:
-#         description: Release Tag
-#         required: true
-#         type: string
-        
-
+name: Publish
+run-name: ${{ github.actor }} triggered a publication
+on:
+  - workflow_dispatch
+  - workflow_call
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download_iso_artifact_step
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          workflow_conclusion: success
+          branch: main
+          name: built-iso
+      - name: create_release_step
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: true

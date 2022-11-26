@@ -1,9 +1,8 @@
 name: Build
 run-name: ${{ github.actor }} triggered a build
-# on: 
-#   workflow_call
 on:
-  workflow_dispatch
+  - workflow_dispatch
+  - workflow_call
 jobs:
   build:
     runs-on: ubuntu-latest
