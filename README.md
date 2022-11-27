@@ -5,7 +5,7 @@ The official RebornOS ISO source.
 > **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (that use `pacman`, and the Arch Linux package repositories)
 
 The upstream is [the releng config of archiso](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
-This repository has been created using *git subtree*. Please keep it updated by git merging with latest upstream changes.
+This repository has been created using *git subtree*. [Please keep it updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/xfce-minimal-iso#3-update)
 
 ## 1. Cloning
 
