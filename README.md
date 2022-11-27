@@ -48,7 +48,7 @@ To keep this project in sync with the upstream ArchISO Releng configuration, ple
 
 1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then uses *git subtree* to copy over the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `releng` branch.
 ```sh
-sh update-releng-branch.sh
+sh scripts/update-releng-branch.sh
 ```
 
 2. **Merge upstream changes**
