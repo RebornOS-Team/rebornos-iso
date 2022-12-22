@@ -22,6 +22,7 @@ echo ""
 set -o xtrace
 sudo rm -r "$WORK_DIRECTORY"
 sudo rm -r "$OUTPUT_DIRECTORY"
+rm -f /var/tmp/local_repo_dir
 set +o xtrace
 
 # Create directories
@@ -31,6 +32,7 @@ echo ""
 set -o xtrace
 mkdir -p "$WORK_DIRECTORY"
 mkdir -p "$OUTPUT_DIRECTORY"
+ln -s "$PROJECT_DIRECTORY/local_repo" /var/tmp/local_repo_dir
 set +o xtrace
 
 # Build the ISO image
