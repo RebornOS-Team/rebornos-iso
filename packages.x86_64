@@ -291,9 +291,9 @@ linux-headers
 # linux-lts
 # linux-lts-headers
 
-# ========
-# Graphics
-# ========
+# ===
+# GUI
+# ===
 xfce4
 xfce4-goodies
 # Enabled using ln -s /usr/lib/systemd/system/lightdm.service airootfs/etc/systemd/system/display-manager.service
@@ -301,8 +301,13 @@ lightdm
 # gdm
 xorg
 noto-fonts-emoji
-hicolor-icon-theme
+# hicolor-icon-theme
 lightdm-slick-greeter
+gnu-free-fonts
+otf-fira-mono
+adobe-source-han-sans-otc-fonts
+adobe-source-han-serif-otc-fonts
+deepin-icon-theme
 
 # --------------
 # Graphics - AMD
@@ -339,11 +344,6 @@ wget
 curl
 accountsservice
 fastfetch
-gnu-free-fonts
-otf-fira-mono
-adobe-source-han-sans-otc-fonts
-adobe-source-han-serif-otc-fonts
-deepin-icon-theme
 file-roller
 # grub2-theme-vimix-git
 # firefox-extension-arch-search
