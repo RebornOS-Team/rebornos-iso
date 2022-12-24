@@ -1,5 +1,10 @@
 # RebornOS ISO - Xfce Minimal
 
+![GitHub](https://img.shields.io/github/license/rebornos-developers/xfce-minimal-iso)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/rebornos-developers/xfce-minimal-iso)
+[![Release](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/release.yml)
+[![Pre-Release](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/pre_release.yml)
+
 The official RebornOS ISO source.
 
 > **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (that use `pacman`, and the Arch Linux package repositories)
