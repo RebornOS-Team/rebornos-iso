@@ -35,7 +35,7 @@ jobs:
           cd ..
       - id: build_iso_step
         name: Build ISO
-        run: sh build.sh
+        run: sh scripts/build.sh
         # run: |
         #   mkdir output
         #   touch output/xfce-minimal.iso
