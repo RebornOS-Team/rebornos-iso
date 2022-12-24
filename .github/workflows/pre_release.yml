@@ -11,6 +11,7 @@ jobs:
       image: rebornos/rebornos:latest
       ports:
         - 80
+      options: --privileged
     steps:
       - id: init_docker_step
         name: Initialize RebornOS Docker Container        
