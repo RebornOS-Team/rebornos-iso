@@ -1,0 +1,58 @@
+name: Release
+run-name: Release triggered by ${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+  schedule:
+    - cron: '58 3 5,20 * *'  
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    container: 
+      image: rebornos/rebornos:latest
+      ports:
+        - 80
+    steps:
+      - id: init_docker_step
+        name: Initialize RebornOS Docker Container        
+        run: |
+          sh /usr/bin/init-rebornos-docker.sh
+          pacman -S --noconfirm github-cli
+      - id: checkout_repository_step
+        name: Checkout Git Repository
+        uses: actions/checkout@v3
+      - id: fetch_installer_step
+        name: Fetch Installer
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd local_repo
+          gh -R rebornos-developers/calamares-configuration release download --pattern '*.pkg.tar*'
+          gh -R rebornos-developers/calamares-core release download --pattern '*.pkg.tar*'
+          rm -f *.md5sum
+          repo-add rebornos-iso.db.tar.xz calamares*.pkg.tar.*
+          cd ..
+      - id: build_iso_step
+        name: Build ISO
+        run: sh build.sh
+      - id: generate_checksum_step
+        name: Generate CheckSum
+        run: find output -type f -exec sh -c 'md5sum $0 > $0.md5sum' {} \;
+      - id: get_date_step
+        name: Get the Date
+        run: echo "NOW=$(date +'%Y.%m.%d_%H_%M_%S')" >> $GITHUB_ENV
+      - id: create_release_step
+        name: Create Release        
+        uses: softprops/action-gh-release@v1
+        with:          
+          draft: false
+          prerelease: false
+          fail_on_unmatched_files: true
+          generate_release_notes: false
+          append_body: false
+          body_path: CHANGELOG.md
+          tag_name: ${{ env.NOW }}
+          name: ${{ env.NOW }}
+          files: |
+            output/*.iso*  

@@ -1,6 +1,24 @@
 # CHANGELOG
 
-## REBORNOS_XFCE_MINIMAL 2022.11.13-x86_64
+## REBORNOS_XFCE_MINIMAL `2022.11.13` -> `2022.12.05` CHANGELOG
+
+### For users
+
+- Loud Beep turned off at boot
+ 
+- Emoji support added through noto-fonts-emoji
+ 
+- Updated with upstream ArchISO for new features and fixes
+ 
+- Updated installer included
+
+### For devs
+
+- Build CI
+ 
+- Revamped and updated documentation
+
+## REBORNOS_XFCE_MINIMAL 2022.11.13-x86_64 CHANGELOG
 
 ### Installer:
 *For versions*: [ `calamares-core 3.3.0_alpha2_1`, `calamares-configuration 0.1.1` ]
