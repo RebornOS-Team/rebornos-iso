@@ -52,4 +52,4 @@ jobs:
           tag_name: ${{ env.NOW }}
           name: ${{ env.NOW }}
           files: |
-            ${{ steps.download_package_step.outputs.download-path }}/**${{ github.event.repository.name }}*.pkg.tar*  
+            output/*.iso* 
