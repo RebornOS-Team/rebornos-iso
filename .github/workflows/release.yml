@@ -35,7 +35,8 @@ jobs:
           cd ..
       - id: build_iso_step
         name: Build ISO
-        run: sh build.sh
+        # run: sh build.sh
+        run: touch output/xfce-minimal.iso       
       - id: generate_checksum_step
         name: Generate CheckSum
         run: find output -type f -exec sh -c 'md5sum $0 > $0.md5sum' {} \;
