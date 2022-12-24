@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   workflow_call:
 jobs:
-  release:
-    name: Release
+  pre_release:
+    name: Pre-Release
     runs-on: ubuntu-latest
     container: 
       image: rebornos/rebornos:latest
