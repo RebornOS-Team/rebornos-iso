@@ -157,6 +157,12 @@ gtkmm3
 # ========
 libinput
 xorg-drivers
+bluez
+bluez-utils
+blueman
+gvfs
+gvfs-afc
+gvfs-mtp
 
 # ==================
 # Hardware - Network
@@ -294,8 +300,6 @@ linux-headers
 # ===
 # GUI
 # ===
-xfce4
-xfce4-goodies
 # Enabled using ln -s /usr/lib/systemd/system/lightdm.service airootfs/etc/systemd/system/display-manager.service
 lightdm
 # gdm
@@ -308,6 +312,27 @@ otf-fira-mono
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 deepin-icon-theme
+
+# ====
+# xfce
+# ====
+xfce4
+mousepad
+parole
+ristretto
+thunar-archive-plugin
+xfce4-battery-plugin
+xfce4-datetime-plugin
+xfce4-mount-plugin
+xfce4-mpc-plugin
+xfce4-notifyd
+xfce4-pulseaudio-plugin
+xfce4-screensaver
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-wavelan-plugin
+xfce4-whiskermenu-plugin
+xfce4-xkb-plugin
 
 # --------------
 # Graphics - AMD

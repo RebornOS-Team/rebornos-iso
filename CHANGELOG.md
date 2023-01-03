@@ -12,11 +12,17 @@
  
 - Updated installer included
 
+- File manager can now see Apple and Android USB devices.
+
+- Bluetooth support added (needed for bluetooth keyboards and mice).
+
 ### For devs
 
 - Build CI
  
 - Revamped and updated documentation
+
+- Xfce is trimmed down
 
 ## REBORNOS_XFCE_MINIMAL 2022.11.13-x86_64 CHANGELOG
 
