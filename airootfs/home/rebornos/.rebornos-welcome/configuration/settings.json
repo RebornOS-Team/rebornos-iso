@@ -10,5 +10,6 @@
     "log_directory": "~/.rebornos-welcome/log/",
     "auto_start_enabled": false,
     "current_log_file_path": "log/",
-    "current_working_directory": ""
+    "current_working_directory": "",
+    "show_install_info": true
 }

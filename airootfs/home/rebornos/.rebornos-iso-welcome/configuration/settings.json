@@ -1,0 +1,19 @@
+{
+    "version": "1",
+    "ui-toolkits": {
+        "available": [
+            "gtk"
+        ],
+        "default": "gtk",
+        "current": "gtk"
+    },
+    "log_directory": "~/.rebornos-iso-welcome/log/",
+    "auto_start_enabled": true,
+    "current_log_file_path": "log/welcome_app-2021-03-29_20_16_24_CDT.log",
+    "current_working_directory": "",
+    "show_install_info": false,
+    "show_update_toggle": true,
+    "show_git_toggle": false,
+    "installer_package_name_stub": "calamares-core",
+    "installer_config_package_name_stub": "calamares-configuration"
+}
