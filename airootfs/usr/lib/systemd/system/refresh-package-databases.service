@@ -1,11 +1,6 @@
 [Unit]
 Description=Refresh all package databases
-Requires=refresh-mirrors.service
-After=refresh-mirrors.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/env sh /usr/bin/refresh-package-databases.sh
-
-[Install]
-WantedBy=multi-user.target
+ExecStart=/bin/bash -c "pacman -Syy"
