@@ -16,6 +16,8 @@
 
 - Bluetooth support added (needed for bluetooth keyboards and mice).
 
+- Pacman databases start out refreshed (you no longer need to run `pacman -Sy`)
+
 ### For devs
 
 - Build CI
@@ -24,3 +26,4 @@
 
 - Xfce is trimmed down
 
+- Removed mirror refresh at boot
