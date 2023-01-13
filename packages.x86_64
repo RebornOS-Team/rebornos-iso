@@ -334,6 +334,7 @@ xfce4-taskmanager
 xfce4-wavelan-plugin
 xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
+engrampa
 
 # --------------
 # Graphics - AMD
@@ -370,7 +371,6 @@ wget
 curl
 accountsservice
 fastfetch
-file-roller
 # grub2-theme-vimix-git
 # firefox-extension-arch-search
 # xdg-utils
