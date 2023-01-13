@@ -371,7 +371,6 @@ wget
 curl
 accountsservice
 fastfetch
-file-roller
 # grub2-theme-vimix-git
 # firefox-extension-arch-search
 # xdg-utils
