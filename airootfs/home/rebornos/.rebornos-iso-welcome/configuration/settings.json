@@ -13,7 +13,7 @@
     "current_working_directory": "",
     "show_install_info": false,
     "show_update_toggle": true,
-    "show_git_toggle": false,
+    "show_git_toggle": true,
     "installer_package_name_stub": "calamares-core",
     "installer_config_package_name_stub": "calamares-configuration"
 }
