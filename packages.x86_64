@@ -295,8 +295,8 @@ udftools
 # ======
 linux
 linux-headers
-# linux-lts
-# linux-lts-headers
+linux-lts
+linux-lts-headers
 
 # ===
 # GUI
