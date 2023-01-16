@@ -14,6 +14,9 @@
     "show_install_info": false,
     "show_update_toggle": true,
     "show_git_toggle": true,
+    "show_from_github_toggle": true,
     "installer_package_name_stub": "calamares-core",
-    "installer_config_package_name_stub": "calamares-configuration"
+    "installer_config_package_name_stub": "calamares-configuration",
+    "installer_github_url_stub": "rebornos-developers/calamares-core",
+    "installer_config_github_url_stub": "rebornos-developers/calamares-configuration"
 }
