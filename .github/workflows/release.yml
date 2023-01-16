@@ -39,8 +39,8 @@ jobs:
         run: sh scripts/build.sh
         # run: |
         #   mkdir output
-        #   touch output/xfce-minimal.iso
-        #   echo "Hello World!" > output/xfce-minimal.iso
+        #   touch output/rebornos_iso.iso
+        #   echo "Hello World!" > output/rebornos_iso.iso
       - id: generate_checksum_step
         name: Generate CheckSum
         run: find output -type f -exec sh -c 'md5sum $0 > $0.md5sum' {} \;
