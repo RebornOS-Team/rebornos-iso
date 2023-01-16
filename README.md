@@ -1,16 +1,16 @@
-# RebornOS ISO - Xfce Minimal
+# RebornOS ISO
 
-![GitHub](https://img.shields.io/github/license/rebornos-developers/xfce-minimal-iso)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/rebornos-developers/xfce-minimal-iso)
-[![Release](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/release.yml)
-[![Pre-Release](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Developers/xfce-minimal-iso/actions/workflows/pre_release.yml)
+![GitHub](https://img.shields.io/github/license/rebornos-developers/rebornos-iso)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/rebornos-developers/rebornos-iso)
+[![Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml)
+[![Pre-Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml)
 
 The official RebornOS ISO source.
 
 > **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (that use `pacman`, and the Arch Linux package repositories)
 
 The upstream is [the releng config of archiso](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
-This repository has been created using *git subtree*. [Please keep it updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/xfce-minimal-iso#3-update)
+This repository has been created using *git subtree*. [Please keep it updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/rebornos-iso#3-update)
 
 ## 1. Cloning
 
@@ -19,7 +19,7 @@ In order to download the source code to your local computer for testing, or for 
 ### HTTPS
 
 ```bash
-git clone https://github.com/RebornOS-Developers/xfce-minimal-iso.git 
+git clone https://github.com/RebornOS-Developers/rebornos-iso.git 
 ```
 
 OR
@@ -27,20 +27,20 @@ OR
 ### SSH
 
 ```bash
-git clone git@github.com:RebornOS-Developers/xfce-minimal-iso.git
+git clone git@github.com:RebornOS-Developers/rebornos-iso.git
 ```
 
 ## (Optional) Clean-up old packages and directories
 
 You usually do not need to do this unless the build fails.
-The build process following cleanup is usually slow because it has to start from scratch. Change to the project directory (`cd xfce-minimal-iso`) and run
+The build process following cleanup is usually slow because it has to start from scratch. Change to the project directory (`cd rebornos-iso`) and run
 ```bash
 sh scripts/clean.sh
 ```
 
 ## 2. Build
 
-The below script will build the ISO image (and install any prerequisites). Change to the project directory (`cd xfce-minimal-iso`) and run
+The below script will build the ISO image (and install any prerequisites). Change to the project directory (`cd rebornos-iso`) and run
 
 ```bash
 sh scripts/build.sh
@@ -49,7 +49,7 @@ Check the `output/` directory for the output ISO file.
 
 ## 3. Update
 
-To keep this project in sync with the upstream ArchISO Releng configuration, please follow the below steps. Change to the project directory (`cd xfce-minimal-iso`) before continuing...
+To keep this project in sync with the upstream ArchISO Releng configuration, please follow the below steps. Change to the project directory (`cd rebornos-iso`) before continuing...
 
 1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then uses *git subtree* to copy over the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `releng` branch.
 ```sh

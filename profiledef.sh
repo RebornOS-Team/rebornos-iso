@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="rebornos_xfce_minimal"
+iso_name="rebornos_iso"
 iso_label="ROS_$(date +%Y%m)"
 iso_publisher="RebornOS <https://www.rebornos.org>"
 iso_application="RebornOS Live/Rescue ISO"
