@@ -103,7 +103,7 @@ sof-firmware
 squashfs-tools
 sudo
 syslinux
-systemd-resolvconf
+# systemd-resolvconf # Using just NetworkManager instead, for a cleaner setup
 tcpdump
 terminus-font
 testdisk
