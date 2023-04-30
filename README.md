@@ -40,6 +40,13 @@ sh scripts/clean.sh
 
 ## 2. Build
 
+## (Optional) Use local repository
+# file:///var/tmp/local_repo_dir symlinks to the "local_repo" directory
+Edit the pacman.conf file and uncomment these lines
+#[rebornos-iso]
+#SigLevel = Optional TrustAll
+#Server = file:///var/tmp/local_repo_dir
+
 The below script will build the ISO image (and install any prerequisites). Change to the project directory (`cd rebornos-iso`) and run
 
 ```bash
