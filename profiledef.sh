@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034
 
 iso_name="rebornos_iso"
-iso_label="ROS_$(date +%Y%m)"
+iso_label="ROS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="RebornOS <https://www.rebornos.org>"
 iso_application="RebornOS Live/Rescue ISO"
-iso_version="$(date +%Y.%m.%d)"
+iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
