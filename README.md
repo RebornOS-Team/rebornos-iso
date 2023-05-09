@@ -38,14 +38,17 @@ The build process following cleanup is usually slow because it has to start from
 sh scripts/clean.sh
 ```
 
-## 2. Build
+## (Optional) Enable local repository
+> **Note:** *`file:///var/tmp/local_repo_dir` symlinks to the `local_repo` directory*.
 
-## (Optional) Use local repository
-# file:///var/tmp/local_repo_dir symlinks to the "local_repo" directory
-Edit the pacman.conf file and uncomment these lines
+Edit the `pacman.conf` file and uncomment the below lines
+```
 #[rebornos-iso]
 #SigLevel = Optional TrustAll
 #Server = file:///var/tmp/local_repo_dir
+```
+
+## 2. Build
 
 The below script will build the ISO image (and install any prerequisites). Change to the project directory (`cd rebornos-iso`) and run
 

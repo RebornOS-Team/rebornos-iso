@@ -1,0 +1,11 @@
+--- ./scripts/mkarchiso	2023-05-09 01:33:34.394171722 -0500
++++ ./scripts/mkarchiso_copy	2023-05-09 01:35:58.885279885 -0500
+@@ -390,7 +390,7 @@
+                 if [[ ! -d "${pacstrap_dir}${passwd[5]}" ]]; then
+                     install -d -m 0750 -o "${passwd[2]}" -g "${passwd[3]}" -- "${pacstrap_dir}${passwd[5]}"
+                 fi
+-                cp -dnRT --preserve=mode,timestamps,links -- "${pacstrap_dir}/etc/skel/." "${pacstrap_dir}${passwd[5]}"
++                cp -dRT --update=none --preserve=mode,timestamps,links -- "${pacstrap_dir}/etc/skel/." "${pacstrap_dir}${passwd[5]}"
+                 chmod -f 0750 -- "${pacstrap_dir}${passwd[5]}"
+                 chown -hR -- "${passwd[2]}:${passwd[3]}" "${pacstrap_dir}${passwd[5]}"
+             else

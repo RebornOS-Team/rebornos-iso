@@ -40,7 +40,7 @@ echo ""
 echo "Building the ISO image..."
 echo ""
 set -o xtrace
-(cd "$SCRIPT_DIRECTORY" && wget -O "mkarchiso" "https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/archiso/mkarchiso")
+(cd "$SCRIPT_DIRECTORY" && wget -O "mkarchiso" "https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/archiso/mkarchiso"; patch mkarchiso < mkarchiso.patch)
 sudo bash "$SCRIPT_DIRECTORY"/mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
 EXIT_CODE="$?"
 set +o xtrace
