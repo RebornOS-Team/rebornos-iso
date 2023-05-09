@@ -1,0 +1,451 @@
+# =======
+# ArchISO
+# =======
+alsa-utils
+amd-ucode
+arch-install-scripts
+archinstall
+b43-fwcutter
+base
+bind
+brltty
+# broadcom-wl # DKMS version included below
+btrfs-progs
+clonezilla
+cloud-init
+cryptsetup
+darkhttpd
+ddrescue
+dhclient
+dhcpcd
+diffutils
+dmidecode
+dmraid
+dnsmasq
+dosfstools
+e2fsprogs
+edk2-shell
+efibootmgr
+espeakup
+ethtool
+exfatprogs
+f2fs-tools
+fatresize
+fsarchiver
+gnu-netcat
+gpart
+gpm
+gptfdisk
+grml-zsh-config
+grub
+hdparm
+hyperv
+intel-ucode
+irssi
+iw
+iwd
+jfsutils
+kitty-terminfo
+less
+lftp
+libfido2
+libusb-compat
+linux-atm
+linux-firmware
+linux-firmware-marvell
+livecd-sounds
+lsscsi
+lvm2
+lynx
+man-db
+man-pages
+mc
+mdadm
+memtest86+
+memtest86+-efi
+mkinitcpio
+mkinitcpio-archiso
+mkinitcpio-nfs-utils
+modemmanager
+mtools
+nano
+nbd
+ndisc6
+nfs-utils
+nilfs-utils
+nmap
+ntfs-3g
+nvme-cli
+open-iscsi
+# open-vm-tools # Included below
+openconnect
+openssh
+openvpn
+partclone
+parted
+partimage
+pcsclite
+ppp
+pptpclient
+pv
+# qemu-guest-agent # Included below
+refind
+reflector
+reiserfsprogs
+rp-pppoe
+rsync
+rxvt-unicode-terminfo
+screen
+sdparm
+sg3_utils
+smartmontools
+sof-firmware
+squashfs-tools
+sudo
+syslinux
+# systemd-resolvconf # Using just NetworkManager instead, for a cleaner setup
+tcpdump
+terminus-font
+testdisk
+tmux
+tpm2-tss
+udftools
+usb_modeswitch
+usbmuxd
+usbutils
+vim
+# virtualbox-guest-utils-nox # Replaced with virtualbox-guest-utils below
+vpnc
+wireless-regdb
+wireless_tools
+wpa_supplicant
+wvdial
+xfsprogs
+xl2tpd
+zsh
+
+# =====
+# Audio
+# =====
+pipewire
+# lib32-pipewire
+wireplumber
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+# lib32-pipewire-jack
+pavucontrol
+
+# =========
+# VM - QEMU
+# =========
+qemu-guest-agent
+spice-vdagent
+
+# ===============
+# VM - VirtualBox
+# ===============
+virtualbox-guest-utils
+
+# ===============
+# VM - VMware
+# ===========
+open-vm-tools
+gtkmm3
+
+# ========
+# Hardware
+# ========
+libinput
+xorg-drivers
+bluez
+bluez-utils
+blueman
+gvfs
+gvfs-afc
+gvfs-mtp
+
+# ==================
+# Hardware - Network
+# ==================
+networkmanager
+network-manager-applet
+modemmanager
+usb_modeswitch
+rp-pppoe
+
+# =========================
+# Hardware - Network - VPN
+# =========================
+wireguard-tools
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+networkmanager-strongswan
+networkmanager-l2tp
+network-manager-sstp
+
+# ================
+# Hardware - Other
+# ================
+# xf86-input-mtrack-git # Conflicts with xorg-drivers
+broadcom-wl-dkms
+b43-firmware
+rtl8723bu-git-dkms
+rtl8812au-dkms-git
+# rtl8814au-aircrack-dkms-git # Conflicts with rtl8814au-dkms-git
+rtl8814au-dkms-git
+rtl8821ce-dkms-git
+rtl8821cu-dkms-git
+rtl88x2bu-dkms-git
+# rtl88xxau-aircrack-dkms-git # Conflicts with rtl8812au-dkms-git
+
+# =========
+# Diagnosis
+# =========
+inxi
+pastebinit
+
+# ======
+# Rescue
+# ======
+rate-mirrors
+os-prober
+
+# ----------------
+# Rescue - Storage
+# ----------------
+gparted
+hdparm
+sdparm
+
+# Rescue - Storage - exFAT
+# ========================
+exfatprogs
+exfat-utils
+
+# Rescue - Storage - APFS
+# =======================
+# linux-apfs-rw-dkms-git
+# apfsprogs-git
+
+# Rescue - Storage - Bcachefs
+# ===========================
+# linux-bcachefs-git
+# bcachefs-tools-git
+
+# Rescue - Storage - ZFS
+# ======================
+# zfs-linux
+# zfs-linux-lts
+# zfs-dkms
+# zfs-utils
+
+# Rescue - Storage - VFAT
+# =======================
+dosfstools
+
+# Rescue - Storage - ext3, ext4
+# =============================
+e2fsprogs
+
+# Rescue - Storage - NTFS
+# =======================
+ntfs-3g
+
+# Rescue - Storage - BTRFS
+# ========================
+btrfs-progs
+
+# Rescue - Storage - XFS
+# ======================
+# xfs-tools
+
+# Rescue - Storage - ReiserFS
+# ===========================
+reiserfsprogs
+
+# Rescue - Storage - F2FS
+# =======================
+f2fs-tools
+
+# Rescue - Storage - HFS
+# ======================
+# hfsprogs
+
+# Rescue - Storage - JFS
+# ======================
+jfsutils
+
+# Rescue - Storage - NILFS2
+# =========================
+nilfs-utils
+
+# Rescue - Storage - UDF
+# ======================
+udftools
+
+# Rescue - Storage - Reiser4
+# ==========================
+# reiser4progs
+
+# ======
+# Kernel
+# ======
+linux
+linux-headers
+linux-lts
+linux-lts-headers
+
+# ===
+# GUI
+# ===
+# Enabled using ln -s /usr/lib/systemd/system/lightdm.service airootfs/etc/systemd/system/display-manager.service
+lightdm
+# gdm
+xorg
+noto-fonts-emoji
+# hicolor-icon-theme
+lightdm-slick-greeter
+gnu-free-fonts
+otf-fira-mono
+adobe-source-han-sans-otc-fonts
+adobe-source-han-serif-otc-fonts
+deepin-icon-theme
+
+# ====
+# xfce
+# ====
+xfce4
+mousepad
+parole
+ristretto
+thunar-archive-plugin
+xfce4-battery-plugin
+xfce4-datetime-plugin
+xfce4-mount-plugin
+xfce4-mpc-plugin
+xfce4-notifyd
+xfce4-pulseaudio-plugin
+xfce4-screensaver
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-wavelan-plugin
+xfce4-whiskermenu-plugin
+xfce4-xkb-plugin
+engrampa
+
+# --------------
+# Graphics - AMD
+# --------------
+mesa
+mesa-utils
+# lib32-mesa
+mesa-vdpau
+# lib32-mesa-vdpau
+
+# -----------------
+# Graphics - NVIDIA
+# -----------------
+nvidia
+# nvidia-lts
+nvidia-utils
+# lib32-nvidia-utils
+
+# ====
+# Misc 
+# ====
+yay
+# paru-bin
+base-devel
+nano-syntax-highlighting
+perl
+python
+firefox
+packagekit
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+pamac-aur
+wget
+curl
+accountsservice
+fastfetch
+# grub2-theme-vimix-git
+# firefox-extension-arch-search
+# xdg-utils
+# xorg-apps
+
+# ========
+# Showcase
+# ========
+# starship
+baobab
+# bleachbit
+# code
+# grub-customizer
+hardinfo
+# libreoffice-fresh
+# pace 
+# pamac
+# stacer
+# timeshift
+# gnome-boxes
+# discord
+# pidgin
+# inkscape
+# krita
+# obs-studio
+
+# ========
+# RebornOS
+# ========
+rebornos-iso-welcome
+rebornos-welcome
+# rebornos-fire
+refresh-mirrors
+rebornos-logo
+rebornos-keyring
+rebornos-mirrorlist
+rebornos-os-release
+
+# ==========
+# Qt theming
+# ==========
+# oxygen
+breeze
+
+# =====================
+# Installer - Calamares
+# =====================
+qt5-location
+qt5-svg
+qt5-tools
+qt5-webengine
+qt5-xmlpatterns
+qt5ct
+qqc2-desktop-style
+polkit-qt5
+kconfig
+kcoreaddons
+kdbusaddons
+kwidgetsaddons
+ki18n
+kpackage
+kparts
+kpmcore
+plasma-framework
+boost
+boost-libs
+appstream-qt
+libatasmart
+libpwquality
+parted
+solid
+udisks2
+yaml-cpp
+polkit
+ckbcomp
+python-yaml
+calamares-configuration
+calamares-core
