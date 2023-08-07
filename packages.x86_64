@@ -447,5 +447,6 @@ yaml-cpp
 polkit
 ckbcomp
 python-yaml
+mkinitcpio-openswap
 calamares-configuration
 calamares-core

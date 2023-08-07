@@ -11,7 +11,7 @@
     "auto_start_enabled": true,
     "current_log_file_path": "log/welcome_app-2021-03-29_20_16_24_CDT.log",
     "current_working_directory": "",
-    "show_install_info": false,
+    "show_install_info": true,
     "show_update_toggle": true,
     "show_git_toggle": true,
     "show_from_github_toggle": true,
