@@ -201,6 +201,7 @@ rtl8821ce-dkms-git
 rtl8821cu-dkms-git
 rtl88x2bu-dkms-git
 # rtl88xxau-aircrack-dkms-git # Conflicts with rtl8812au-dkms-git
+rtl8852au-dkms-git
 
 # =========
 # Diagnosis
