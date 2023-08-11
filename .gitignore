@@ -1,12 +1,6 @@
-*~
-archiso-*.tar.gz*
-work/
-out/
-*.iso
-*.img
-*.cer
-*.crt
-*.key
-*.pem
-user-data
-meta-data
+output/
+airootfs/etc/pacman.d/mirrorlist
+airootfs/etc/pacman.d/reborn-mirrorlist
+*.code-workspace
+.vscode
+# local_repo/*.*
