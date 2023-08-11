@@ -20,7 +20,8 @@ INITIAL_BRANCH="$(git branch --show-current)"
             git branch -D _releng \
             || true
         } \
-        && git switch --orphan _releng \
+        && git checkout -b _releng \
+        && git rm -rf . \
         && git checkout _archiso -- configs/releng \
         && git checkout _archiso -- archiso/mkarchiso \
         && git checkout main -- .gitignore \
