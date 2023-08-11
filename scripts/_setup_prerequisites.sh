@@ -7,6 +7,7 @@ echo ""
 
 SCRIPT_DIRECTORY="$(dirname -- "$(readlink -f -- "$0")")"
 PROJECT_DIRECTORY="$(dirname -- "$SCRIPT_DIRECTORY")"
+ISO_CONFIGURATION_DIRECTORY="$PROJECT_DIRECTORY/configs/releng"
 
 echo "Project Directory: $PROJECT_DIRECTORY"
 echo "Script Directory: $SCRIPT_DIRECTORY"
@@ -34,7 +35,7 @@ echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
 sudo pacman -Sy --noconfirm archlinux-keyring rebornos-keyring
-sudo pacman -Sy --noconfirm --needed archiso wget # rsync git git-lfs
+sudo pacman -Sy --noconfirm --needed archiso # wget rsync git git-lfs
 # git lfs install
 # git lfs pull
 set +o xtrace
@@ -43,6 +44,6 @@ echo ""
 echo "Copying mirrorlists..."
 echo ""
 set -o xtrace
-cp -f /etc/pacman.d/reborn-mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d/
-cp -f /etc/pacman.d/mirrorlist "$PROJECT_DIRECTORY"/airootfs/etc/pacman.d/
+cp -f /etc/pacman.d/reborn-mirrorlist "$ISO_CONFIGURATION_DIRECTORY"/airootfs/etc/pacman.d/
+cp -f /etc/pacman.d/mirrorlist "$ISO_CONFIGURATION_DIRECTORY"/airootfs/etc/pacman.d/
 set +o xtrace

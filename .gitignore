@@ -1,6 +1,7 @@
 output/
-airootfs/etc/pacman.d/mirrorlist
-airootfs/etc/pacman.d/reborn-mirrorlist
+output.log
+configs/releng/airootfs/etc/pacman.d/mirrorlist
+configs/releng/airootfs/etc/pacman.d/reborn-mirrorlist
 configs/baseline
 *.code-workspace
 .vscode

@@ -5,14 +5,15 @@
 [![Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml)
 [![Pre-Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml)
 
-The official RebornOS ISO source.
+The official **RebornOS ISO** source.
 
-The upstream for this project is [the `releng` configuration of ArchISO](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
-[Please keep this git repository updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/rebornos-iso#3-update)
+The upstream for this project is [the `releng` configuration directory of *ArchISO*](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).\
+
+[Please keep this git repository updated](https://github.com/RebornOS-Developers/rebornos-iso#3-update) by git merging with latest upstream changes.
 
 ## 1. Cloning
 
-In order to download the source code to your local computer for testing, or for development, you can clone from the remote repository using either SSH, or HTTPS. Below are instructions on how to do so using Gitlab hosted code as remote.
+To download the source code for testing, or for development, you can clone from the remote repository using either SSH, or HTTPS:
 
 ### HTTPS
 
@@ -29,7 +30,6 @@ git clone git@github.com:RebornOS-Developers/rebornos-iso.git
 ```
 
 ## (Optional) Enable local repository
-> **Note:** *`file:///var/tmp/local_repo_dir` symlinks to the `local_repo` directory*.
 
 Edit the `pacman.conf` file and uncomment the below lines
 ```
@@ -37,6 +37,7 @@ Edit the `pacman.conf` file and uncomment the below lines
 #SigLevel = Optional TrustAll
 #Server = file:///var/tmp/local_repo_dir
 ```
+> **Note:** *`file:///var/tmp/local_repo_dir` symlinks to the `local_repo` directory*.
 
 ## 2. Build
 
