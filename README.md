@@ -53,12 +53,12 @@ Check the `output/` directory for the output ISO file.
 
 To keep this project in sync with the upstream ArchISO Releng configuration, please follow the below steps. Change to the project directory (`cd rebornos-iso`) before continuing...
 
-1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then uses *git subtree* to copy over the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `releng` branch.
+1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then clones the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `_releng` branch.
 ```sh
 sh scripts/update_releng_branch.sh
 ```
 
-2. **Merge upstream changes**
+1. **Merge upstream changes**
 ```sh
 git checkout main
 
