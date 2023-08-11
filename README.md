@@ -7,7 +7,7 @@
 
 The official RebornOS ISO source.
 
-> **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (that use `pacman`, and the Arch Linux package repositories)
+> **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (i.e. on distributions that use `pacman`, and the Arch Linux package repositories)
 
 The upstream is [the releng config of archiso](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
 This repository has been created using *git subtree*. [Please keep it updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/rebornos-iso#3-update)
@@ -28,14 +28,6 @@ OR
 
 ```bash
 git clone git@github.com:RebornOS-Developers/rebornos-iso.git
-```
-
-## (Optional) Clean-up old packages and directories
-
-You usually do not need to do this unless the build fails.
-The build process following cleanup is usually slow because it has to start from scratch. Change to the project directory (`cd rebornos-iso`) and run
-```bash
-sh scripts/clean.sh
 ```
 
 ## (Optional) Enable local repository

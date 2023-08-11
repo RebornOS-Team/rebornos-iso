@@ -1,5 +1,5 @@
 output/
 airootfs/etc/pacman.d/mirrorlist
 airootfs/etc/pacman.d/reborn-mirrorlist
-# local_repo/*.*
 *.code-workspace
+# local_repo/*.*
