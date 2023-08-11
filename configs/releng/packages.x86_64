@@ -31,6 +31,7 @@ ethtool
 exfatprogs
 f2fs-tools
 fatresize
+foot-terminfo
 fsarchiver
 gnu-netcat
 gpart

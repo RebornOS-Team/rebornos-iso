@@ -61,7 +61,6 @@ echo ""
 echo "Building the ISO image..."
 echo ""
 set -o xtrace
-(cd "$SCRIPT_DIRECTORY" && wget -O "_mkarchiso" "https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/archiso/mkarchiso")
-sudo bash "$SCRIPT_DIRECTORY"/_mkarchiso -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
+sudo bash "$PROJECT_DIRECTORY/archiso/mkarchiso" -v -w "$WORK_DIRECTORY" -o "$OUTPUT_DIRECTORY" "$@" "$PROJECT_DIRECTORY" # Only works with bash shell
 EXIT_CODE="$?"
 set +o xtrace
