@@ -55,14 +55,14 @@ To keep this project in sync with the upstream ArchISO Releng configuration, ple
 
 1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then uses *git subtree* to copy over the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `releng` branch.
 ```sh
-sh scripts/update-releng-branch.sh
+sh scripts/update_releng_branch.sh
 ```
 
 2. **Merge upstream changes**
 ```sh
 git checkout main
 
-git merge releng
+git merge _releng
 ```
 
 3. **Manually handle merge conflicts**: Follow [this guide for commandline operations](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts) or [this guide if you are using *Visual Studio Code*](https://code.visualstudio.com/docs/sourcecontrol/overview#_merge-conflicts).
