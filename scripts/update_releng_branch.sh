@@ -24,6 +24,7 @@ INITIAL_BRANCH="$(git branch --show-current)"
         && git rm -rf . \
         && git checkout _archiso -- configs/releng \
         && git checkout _archiso -- archiso/mkarchiso \
+        && git checkout _archiso -- LICENSE \
         && git checkout main -- .gitignore \
         && git checkout main -- .gitattributes \
         && git add configs/releng \
