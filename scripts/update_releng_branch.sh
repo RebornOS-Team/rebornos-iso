@@ -18,10 +18,8 @@ INITIAL_BRANCH="$(git branch --show-current)"
         git remote add upstream https://gitlab.archlinux.org/archlinux/archiso \
         || {
             git reset --hard upstream/master \
-            && git push --force origin archiso \
             && git subtree split --prefix=configs/releng -b releng \
-            && git checkout releng \
-            && git push --force origin releng
+            && git checkout releng
         }
     }    
 )

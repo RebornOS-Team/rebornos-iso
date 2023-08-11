@@ -40,7 +40,7 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     set -o xtrace
     sudo rm -r "$WORK_DIRECTORY"
     sudo rm -r "$OUTPUT_DIRECTORY"
-    rm -f /var/tmp/local_repo_dir
+    rm -f "$LOCAL_REPO_DESTINATION_DIRECTORY"
     set +o xtrace
 fi
 
@@ -51,8 +51,9 @@ echo ""
 set -o xtrace
 mkdir -p "$WORK_DIRECTORY"
 mkdir -p "$OUTPUT_DIRECTORY"
-mkdir -p "/var/tmp"
-ln -s "$PROJECT_DIRECTORY/local_repo" /var/tmp/local_repo_dir
+sudo mkdir -p "/var/tmp"
+sudo chmod 777 "/var/tmp"
+ln -s "$LOCAL_REPO_SOURCE_DIRECTORY" "$LOCAL_REPO_DESTINATION_DIRECTORY"
 set +o xtrace
 
 # Build the ISO image
