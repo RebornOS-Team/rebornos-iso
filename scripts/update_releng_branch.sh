@@ -9,23 +9,28 @@ INITIAL_BRANCH="$(git branch --show-current)"
 
 (
     cd "$PROJECT_DIRECTORY" \
-    && git fetch --all \
-    && {
-        git checkout --track origin/archiso \
-        || git checkout archiso
-    } \
-    && {
-        git remote add upstream https://gitlab.archlinux.org/archlinux/archiso \
-        || {
-            git reset --hard upstream/master \
-            && git push --force origin archiso \
-            && git subtree split --prefix=configs/releng -b releng \
-            && git checkout releng \
-            && git push --force origin releng
-        }
-    }    
+        && { 
+            git remote add upstream "https://gitlab.archlinux.org/archlinux/archiso" \
+            || true
+        } \
+        && git fetch --all \
+        && git checkout -B _archiso --track upstream \
+        && git reset --hard upstream \
+        && { 
+            git branch -D _releng \
+            || true
+        } \
+        && git checkout -b _releng \
+        && git rm -rf . \
+        && git checkout _archiso -- configs/releng \
+        && git checkout _archiso -- archiso/mkarchiso \
+        && git checkout main -- .gitignore \
+        && git checkout main -- .gitattributes \
+        && git add configs/releng \
+        && git add archiso/mkarchiso \
+        && git commit -m "Updated from the archiso branch"
 )
 
-git checkout "$INITIAL_BRANCH"
+git checkout -f "$INITIAL_BRANCH"
 
 set +o xtrace
