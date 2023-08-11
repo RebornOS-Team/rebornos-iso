@@ -7,10 +7,8 @@
 
 The official RebornOS ISO source.
 
-> **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (i.e. on distributions that use `pacman`, and the Arch Linux package repositories)
-
-The upstream is [the releng config of archiso](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
-This repository has been created using *git subtree*. [Please keep it updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/rebornos-iso#3-update)
+The upstream for this project is [the `releng` configuration of ArchISO](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
+[Please keep this git repository updated by git merging with latest upstream changes](https://github.com/RebornOS-Developers/rebornos-iso#3-update)
 
 ## 1. Cloning
 
@@ -42,6 +40,8 @@ Edit the `pacman.conf` file and uncomment the below lines
 
 ## 2. Build
 
+> **Note**: The script for setting up prerequisites will only build on *Arch Linux* and its derivatives (i.e. on distributions that use `pacman`, and the Arch Linux package repositories)
+
 The below script will build the ISO image (and install any prerequisites). Change to the project directory (`cd rebornos-iso`) and run
 
 ```bash
@@ -53,18 +53,18 @@ Check the `output/` directory for the output ISO file.
 
 To keep this project in sync with the upstream ArchISO Releng configuration, please follow the below steps. Change to the project directory (`cd rebornos-iso`) before continuing...
 
-1. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then clones the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `_releng` branch.
+a. **Fetch changes from the upstream GitLab source**: The below script first clones the [upstream ArchISO](https://gitlab.archlinux.org/archlinux/archiso) to the `archiso` branch (force overwrites it) and then clones the [releng configuration directory](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng) to the `_releng` branch.
 ```sh
 sh scripts/update_releng_branch.sh
 ```
 
-1. **Merge upstream changes**
+b. **Merge upstream changes**
 ```sh
 git checkout main
 
 git merge _releng
 ```
 
-3. **Manually handle merge conflicts**: Follow [this guide for commandline operations](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts) or [this guide if you are using *Visual Studio Code*](https://code.visualstudio.com/docs/sourcecontrol/overview#_merge-conflicts).
+c. **Manually handle merge conflicts**: Follow [this guide for commandline operations](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts) or [this guide if you are using *Visual Studio Code*](https://code.visualstudio.com/docs/sourcecontrol/overview#_merge-conflicts).
 
-4. **Push updates back to the project**: After all the merge conflicts are handled and you stage all the changes, you are ready to push the updates with `git push`.
+d. **Push updates back to the project**: After all the merge conflicts are handled and you stage all the changes, you are ready to push the updates with `git push`.
