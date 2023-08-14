@@ -33,6 +33,7 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     sh "$SCRIPT_DIRECTORY"/_setup_prerequisites.sh
 fi
 
+echo ""
 read -t 5 -p "Do you want to skip clearing the work, output, and local repo directories? (The default option will be selected in 5 seconds) [y/N]: " -n 1 -r
 echo ""
 if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
