@@ -17,7 +17,7 @@ echo "Installing prerequisites if needed. Ignore any warnings..."
 echo ""
 set -o xtrace
 sudo pacman -S --noconfirm archlinux-keyring rebornos-keyring
-sudo pacman -S --noconfirm --needed archiso # wget rsync git git-lfs
+sudo pacman -S --noconfirm --needed archiso refresh-mirrors # wget rsync git git-lfs
 # git lfs install
 # git lfs pull
 set +o xtrace
