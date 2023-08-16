@@ -27,8 +27,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd local_repo
-          gh -R rebornos-developers/calamares-configuration release download --pattern '*.pkg.tar*'
-          gh -R rebornos-developers/calamares-core release download --pattern '*.pkg.tar*'
+          gh -R rebornos-team/calamares-configuration release download --pattern '*.pkg.tar*'
+          gh -R rebornos-team/calamares-core release download --pattern '*.pkg.tar*'
           rm -f *.md5sum
           repo-add rebornos-iso.db.tar.xz calamares*.pkg.tar.*
           cd ..

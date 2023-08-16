@@ -1,15 +1,15 @@
 # RebornOS ISO
 
-![GitHub](https://img.shields.io/github/license/rebornos-developers/rebornos-iso)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/rebornos-developers/rebornos-iso)
-[![Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/release.yml)
-[![Pre-Release](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Developers/rebornos-iso/actions/workflows/pre_release.yml)
+![GitHub](https://img.shields.io/github/license/rebornos-team/rebornos-iso)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/rebornos-team/rebornos-iso)
+[![Release](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/release.yml/badge.svg)](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/release.yml)
+[![Pre-Release](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/pre_release.yml)
 
 The official **RebornOS ISO** source.
 
 The upstream for this project is [the `releng` configuration directory of *ArchISO*](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).\
 
-[Please keep this git repository updated](https://github.com/RebornOS-Developers/rebornos-iso#3-update) by git merging with latest upstream changes.
+[Please keep this git repository updated](https://github.com/RebornOS-Team/rebornos-iso#3-update) by git merging with latest upstream changes.
 
 ## 1. Cloning
 
@@ -18,7 +18,7 @@ To download the source code for testing, or for development, you can clone from 
 ### HTTPS
 
 ```bash
-git clone https://github.com/RebornOS-Developers/rebornos-iso.git 
+git clone https://github.com/RebornOS-Team/rebornos-iso.git 
 ```
 
 OR
@@ -26,7 +26,7 @@ OR
 ### SSH
 
 ```bash
-git clone git@github.com:RebornOS-Developers/rebornos-iso.git
+git clone git@github.com:RebornOS-Team/rebornos-iso.git
 ```
 
 ## (Optional) Enable local repository
