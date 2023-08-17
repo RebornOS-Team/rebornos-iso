@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## REBORNOS ISO `2023.08.17` CHANGELOG
+
+### For users
+
+- Support for more Wireless handware: `rtl8852au`
+- Theming for Qt applications (like the installer) fixed with the `QT_QPA_PLATFORMTHEME="qt5ct"` environment variable and a preset Qt5 configuration file in `/home/rebornos/.config/qt5ct/qt5ct.conf`.
+- New features and bug fixes from upstream incorporated.
+
+### For developers
+
+- The ISO configuration now resiles in `configs/releng` in line with the upstream directory tree.
+- Build scripts revamped with better messages, better formatting, and better prompts.
+- Build scripts now additionally log to a text file.
+- Build scripts install `refresh-mirrors` for uniformity.
+- Partial upgrades removed from the build scripts.
+- Bug fixes for executable permissions in build scripts.
+- New features and bug fixes from upstream incorporated.
+- Updated and faster script to pull upstream changes into a separate `_calamares` branch.
+- The `README.md` documentation is updated.
+
 ## REBORNOS ISO `2023.01.05` CHANGELOG
 
 ### For users
