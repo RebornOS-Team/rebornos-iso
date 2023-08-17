@@ -4,6 +4,7 @@
 
 ### For users
 
+- DNS Caching for better internet experience, using `systemd-resolved`.
 - Support for more Wireless handware: `rtl8852au`
 - Theming for Qt applications (like the installer) fixed with the `QT_QPA_PLATFORMTHEME="qt5ct"` environment variable and a preset Qt5 configuration file in `/home/rebornos/.config/qt5ct/qt5ct.conf`.
 - New features and bug fixes from upstream incorporated.
