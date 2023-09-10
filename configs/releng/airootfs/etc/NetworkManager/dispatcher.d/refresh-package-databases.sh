@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-# Maintainer: shivanandvp <shivanandvp.oss@gmail.com, shivanandvp@rebornos.org>
+# Maintainer: shiva.patt <shiva.patt.oss@gmail.com, shivanandvp@rebornos.org>
 
 # This script needs to be owned by root and have permissions 755
 # Refer to https://developer-old.gnome.org/NetworkManager/stable/NetworkManager.html for arguments
