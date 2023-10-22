@@ -20,7 +20,7 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     echo "Upgrading your system..."
     echo ""
     set -o xtrace
-    sudo pacman -Syyu
+    sudo pacman -Syyu --noconfirm
     set +o xtrace
 fi
 
