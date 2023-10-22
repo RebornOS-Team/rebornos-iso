@@ -8,6 +8,7 @@ archinstall
 b43-fwcutter
 base
 bind
+bolt
 brltty
 # broadcom-wl # DKMS version included below
 btrfs-progs
@@ -80,6 +81,7 @@ nvme-cli
 open-iscsi
 # open-vm-tools # Included below
 openconnect
+openpgp-card-tools
 openssh
 openvpn
 partclone
@@ -98,6 +100,7 @@ rsync
 rxvt-unicode-terminfo
 screen
 sdparm
+sequoia-sq
 sg3_utils
 smartmontools
 sof-firmware
@@ -109,6 +112,7 @@ tcpdump
 terminus-font
 testdisk
 tmux
+tpm2-tools
 tpm2-tss
 udftools
 usb_modeswitch
