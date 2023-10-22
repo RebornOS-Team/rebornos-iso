@@ -53,8 +53,9 @@ cp -f /etc/pacman.d/reborn-mirrorlist "$ISO_CONFIGURATION_DIRECTORY"/airootfs/et
 cp -f /etc/pacman.d/mirrorlist "$ISO_CONFIGURATION_DIRECTORY"/airootfs/etc/pacman.d/
 mkdir -p "$ISO_SYNC_DIRECTORY" \
     && {
+        cp -f /var/lib/pacman/sync/Reborn-OS.db "$ISO_SYNC_DIRECTORY"/Reborn-OS.db
         cp -f /var/lib/pacman/sync/core.db "$ISO_SYNC_DIRECTORY"/core.db
-        cp -f /var/lib/pacman/sync/core.db "$ISO_SYNC_DIRECTORY"/core.db
-        cp -f /var/lib/pacman/sync/core.db "$ISO_SYNC_DIRECTORY"/core.db
+        cp -f /var/lib/pacman/sync/extra.db "$ISO_SYNC_DIRECTORY"/extra.db
+        cp -f /var/lib/pacman/sync/multilib.db "$ISO_SYNC_DIRECTORY"/multilib.db        
     }
 set +o xtrace
