@@ -2,6 +2,7 @@ output/
 output.log
 configs/releng/airootfs/etc/pacman.d/mirrorlist
 configs/releng/airootfs/etc/pacman.d/reborn-mirrorlist
+configs/releng/airootfs/var/lib/pacman/sync/*.db
 configs/baseline
 *.code-workspace
 .vscode
