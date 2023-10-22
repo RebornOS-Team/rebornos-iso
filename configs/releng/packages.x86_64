@@ -406,6 +406,7 @@ hardinfo
 # ========
 # RebornOS
 # ========
+lsb-release
 rebornos-iso-welcome
 rebornos-welcome
 # rebornos-fire
@@ -424,35 +425,5 @@ breeze
 # =====================
 # Installer - Calamares
 # =====================
-qt5-location
-qt5-svg
-qt5-tools
-qt5-webengine
-qt5-xmlpatterns
-qt5ct
-qqc2-desktop-style
-polkit-qt5
-kconfig
-kcoreaddons
-kdbusaddons
-kwidgetsaddons
-ki18n
-kpackage
-kparts
-kpmcore
-plasma-framework
-boost
-boost-libs
-appstream-qt
-libatasmart
-libpwquality
-parted
-solid
-udisks2
-yaml-cpp
-polkit
-ckbcomp
-python-yaml
-mkinitcpio-openswap
 calamares-configuration
 calamares-core
