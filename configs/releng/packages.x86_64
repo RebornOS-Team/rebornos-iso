@@ -426,3 +426,4 @@ breeze
 # =====================
 calamares-configuration
 calamares-core
+mkinitcpio-openswap
