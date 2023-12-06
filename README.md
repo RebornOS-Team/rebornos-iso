@@ -6,9 +6,9 @@
 [![Pre-Release](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/pre_release.yml/badge.svg)](https://github.com/RebornOS-Team/rebornos-iso/actions/workflows/pre_release.yml)
 
 This is the official **RebornOS ISO** source. 
-The ISO configuration can be found [here](rebornos-iso/configs/releng/).
+The ISO configuration can be found [here](configs/releng/).
 
-The upstream for this project is [the `releng` configuration directory of *ArchISO*](https://gitlab.archlinux.org/archlinux/archiso/-/tree/master/configs/releng).
+The upstream for this project is [*ArchISO*](https://gitlab.archlinux.org/archlinux/archiso).
 
 [Please keep this git repository updated](https://github.com/RebornOS-Team/rebornos-iso#3-update) by git merging with latest upstream changes.
 
