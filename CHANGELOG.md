@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## REBORNOS ISO `2023.12.06` CHANGELOG
+
+### For users
+
+- Enable opening of the Whisker start/launch menu when Super/Start/Windows key is pressed.
+- Increase font sizes on the Xfce desktop and on the installer to improve readability on bigger screens.
+- Increase icon sizes too.
+- Turn off Numlock at boot so that smaller laptop keyboards can type letters by default.
+- Fix pacman database sync issues.
+- Update from upstream, bringing new features and bug-fixes.
+
+### For developers
+
+- Do not clear the boot, and pacman directories. The `mkarchiso` script is now different from the upstream and any new changes in the future will need to be merged with conflict handling.
+
 ## REBORNOS ISO `2023.08.17` CHANGELOG
 
 ### For users
