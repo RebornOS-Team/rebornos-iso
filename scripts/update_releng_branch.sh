@@ -15,7 +15,7 @@ INITIAL_BRANCH="$(git branch --show-current)"
         } \
         && git fetch --all \
         && git checkout -B _archiso --track upstream/master \
-        && git reset --hard upstream \
+        && git reset --hard upstream/master \
         && { 
             git branch -D _releng \
             || true
