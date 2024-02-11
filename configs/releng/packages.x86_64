@@ -134,18 +134,21 @@ zsh
 # Audio
 # =====
 pipewire
-# lib32-pipewire
-wireplumber
 pipewire-alsa
-pipewire-pulse
 pipewire-jack
+pipewire-pulse
+# lib32-pipewire
 # lib32-pipewire-jack
+wireplumber
+gst-plugin-pipewire
+alsa-card-profiles
+sof-firmware
 pavucontrol
 
 # =========
 # VM - QEMU
 # =========
-qemu-guest-agent
+qemu-guest-agent 
 spice-vdagent
 xf86-video-qxl
 x-resize
@@ -318,7 +321,8 @@ noto-fonts-emoji
 # hicolor-icon-theme
 lightdm-slick-greeter
 gnu-free-fonts
-otf-fira-mono
+inter-font
+adobe-source-code-pro-fonts
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 deepin-icon-theme
