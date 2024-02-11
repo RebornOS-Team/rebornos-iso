@@ -147,6 +147,8 @@ pavucontrol
 # =========
 qemu-guest-agent
 spice-vdagent
+xf86-video-qxl
+x-resize
 
 # ===============
 # VM - VirtualBox
