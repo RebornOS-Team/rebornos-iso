@@ -154,12 +154,12 @@ _cleanup_pacstrap_dir() {
 
     # # Delete all files in /boot
     # [[ -d "${pacstrap_dir}/boot" ]] && find "${pacstrap_dir}/boot" -mindepth 1 -delete
-    # # Delete pacman database sync cache files (*.tar.gz)
-    # [[ -d "${pacstrap_dir}/var/lib/pacman" ]] && find "${pacstrap_dir}/var/lib/pacman" -maxdepth 1 -type f -delete
+    # Delete pacman database sync cache files (*.tar.gz)
+    [[ -d "${pacstrap_dir}/var/lib/pacman" ]] && find "${pacstrap_dir}/var/lib/pacman" -maxdepth 1 -type f -delete
     # Remove pacman DB lock
     rm -f "${pacstrap_dir}/var/lib/pacman/db.lck"
-    # Remove local pacman cache
-    rm -rf "${pacstrap_dir}/var/lib/pacman/local"
+    # # Remove local pacman cache
+    # rm -rf "${pacstrap_dir}/var/lib/pacman/local"
     # # Delete pacman database sync cache
     # [[ -d "${pacstrap_dir}/var/lib/pacman/sync" ]] && find "${pacstrap_dir}/var/lib/pacman/sync" -delete
     # Delete pacman package cache
