@@ -148,7 +148,7 @@ pavucontrol
 # =========
 # VM - QEMU
 # =========
-qemu-guest-agent 
+qemu-guest-agent
 spice-vdagent
 xf86-video-qxl
 x-resize
