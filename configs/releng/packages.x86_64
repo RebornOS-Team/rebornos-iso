@@ -389,6 +389,8 @@ rebornos-grub2-theme
 # firefox-extension-arch-search
 # xdg-utils
 # xorg-apps
+bash-completion
+zsh-completions
 
 # ========
 # Showcase
