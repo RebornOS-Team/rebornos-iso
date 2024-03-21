@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## REBORNOS ISO `2024.03.20` CHANGELOG
+
+### For users
+
+- Change configuration files to use Qt6.
+- Fix Grub loopback configuration.
+- Update from upstream, bringing new features and bug-fixes.
+
+### For developers
+
 ## REBORNOS ISO `2023.12.06` CHANGELOG
 
 ### For users
