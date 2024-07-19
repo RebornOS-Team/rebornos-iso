@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## REBORNOS ISO `2024.07.19` CHANGELOG
+
+### For users
+
+- Update from upstream, bringing new features and bug-fixes.
+
+### For developers
+
 ## REBORNOS ISO `2024.03.21` CHANGELOG
 
 ### For users
