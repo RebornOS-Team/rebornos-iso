@@ -8,7 +8,7 @@
   <property name="misc-borders-default" type="bool" value="true"/>
   <property name="misc-cursor-blinks" type="bool" value="true"/>
   <property name="misc-cursor-shape" type="string" value="TERMINAL_CURSOR_SHAPE_BLOCK"/>
-  <property name="misc-default-geometry" type="string" value="80x29"/>
+  <property name="misc-default-geometry" type="string" value="80x30"/>
   <property name="misc-inherit-geometry" type="bool" value="false"/>
   <property name="misc-menubar-default" type="bool" value="true"/>
   <property name="misc-mouse-autohide" type="bool" value="false"/>
