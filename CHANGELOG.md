@@ -1,12 +1,17 @@
 # CHANGELOG
 
-## REBORNOS ISO `2024.07.19` CHANGELOG
+## REBORNOS ISO `2024.07.23` CHANGELOG
 
 ### For users
 
+- Resize terminal window to prevent the first line from fastfetch getting cut off.
 - Update from upstream, bringing new features and bug-fixes.
 
 ### For developers
+
+- Update the local repo with the newest installer and remove the old mirrorlist package.
+- Switch back from systemd-boot to grub after the upstream switched the other way.
+- Add LTS kernel options for systemd-boot for when and if we use it in the future.
 
 ## REBORNOS ISO `2024.03.21` CHANGELOG
 
