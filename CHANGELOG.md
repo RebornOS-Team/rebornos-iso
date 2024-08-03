@@ -1,9 +1,10 @@
 # CHANGELOG
 
-## REBORNOS ISO `2024.07.23` CHANGELOG
+## REBORNOS ISO `2024.08.03` CHANGELOG
 
 ### For users
 
+- Add microcode hook
 - Resize terminal window to prevent the first line from fastfetch getting cut off.
 - Update from upstream, bringing new features and bug-fixes.
 
