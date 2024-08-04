@@ -11,7 +11,7 @@ bcachefs-tools
 bind
 bolt
 brltty
-# broadcom-wl # DKMS version included below
+# broadcom-wl # Replaced by broadcom-wl-dkms below
 btrfs-progs
 clonezilla
 cloud-init
@@ -54,6 +54,7 @@ less
 lftp
 libfido2
 libusb-compat
+linux
 linux-atm
 linux-firmware
 linux-firmware-marvell
@@ -81,7 +82,7 @@ nmap
 ntfs-3g
 nvme-cli
 open-iscsi
-# open-vm-tools # Included below
+open-vm-tools
 openconnect
 openpgp-card-tools
 openssh
@@ -93,8 +94,9 @@ pcsclite
 ppp
 pptpclient
 pv
-# qemu-guest-agent # Included below
+qemu-guest-agent
 refind
+# reflector # Removed from RebornOS
 reiserfsprogs
 rp-pppoe
 rsync
@@ -148,7 +150,7 @@ pavucontrol
 # =========
 # VM - QEMU
 # =========
-qemu-guest-agent
+# qemu-guest-agent # Already included in ArchISO
 spice-vdagent
 xf86-video-qxl
 x-resize
@@ -161,7 +163,7 @@ virtualbox-guest-utils
 # ===============
 # VM - VMware
 # ===========
-open-vm-tools
+# open-vm-tools # Already included in ArchISO
 gtkmm3
 
 # ========
@@ -200,18 +202,18 @@ network-manager-sstp
 # ================
 # Hardware - Other
 # ================
-# xf86-input-mtrack-git # Conflicts with xorg-drivers
+# xf86-input-mtrack-git # conflicts with xorg-drivers
 broadcom-wl-dkms
-b43-firmware
-rtl8723bu-git-dkms
-rtl8812au-dkms-git
+# b43-firmware # Removed for testing
+# rtl8723bu-git-dkms  # Removed for testing
+# rtl8812au-dkms-git  # Removed for testing
 # rtl8814au-aircrack-dkms-git # Conflicts with rtl8814au-dkms-git
-rtl8814au-dkms-git
-rtl8821ce-dkms-git
-rtl8821cu-dkms-git
-rtl88x2bu-dkms-git
+# rtl8814au-dkms-git # Removed for testing
+# rtl8821ce-dkms-git # Removed for testing
+# rtl8821cu-dkms-git # Removed for testing
+# rtl88x2bu-dkms-git # Removed for testing
 # rtl88xxau-aircrack-dkms-git # Conflicts with rtl8812au-dkms-git
-rtl8852au-dkms-git
+# rtl8852au-dkms-git # Removed for testing
 
 # =========
 # Diagnosis
@@ -305,7 +307,7 @@ udftools
 # ======
 # Kernel
 # ======
-linux
+# linux # already included in ArchISO
 linux-headers
 linux-lts
 linux-lts-headers
@@ -401,7 +403,7 @@ baobab
 # bleachbit
 # code
 # grub-customizer
-hardinfo
+hardinfo2
 # libreoffice-fresh
 # pace 
 # pamac
