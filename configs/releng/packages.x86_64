@@ -204,16 +204,16 @@ network-manager-sstp
 # ================
 # xf86-input-mtrack-git # conflicts with xorg-drivers
 broadcom-wl-dkms
-# b43-firmware # Removed for testing
-# rtl8723bu-git-dkms  # Removed for testing
-# rtl8812au-dkms-git  # Removed for testing
+# b43-firmware
+rtl8723bu-git-dkms
+rtl8812au-dkms-git
+rtl8814au-dkms-git
+rtl8821ce-dkms-git
+rtl8821cu-dkms-git
+rtl88x2bu-dkms-git
+rtl8852au-dkms-git
 # rtl8814au-aircrack-dkms-git # Conflicts with rtl8814au-dkms-git
-# rtl8814au-dkms-git # Removed for testing
-# rtl8821ce-dkms-git # Removed for testing
-# rtl8821cu-dkms-git # Removed for testing
-# rtl88x2bu-dkms-git # Removed for testing
 # rtl88xxau-aircrack-dkms-git # Conflicts with rtl8812au-dkms-git
-# rtl8852au-dkms-git # Removed for testing
 
 # =========
 # Diagnosis
