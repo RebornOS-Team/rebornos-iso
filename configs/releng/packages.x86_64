@@ -11,7 +11,7 @@ bcachefs-tools
 bind
 bolt
 brltty
-# broadcom-wl # Replaced by broadcom-wl-dkms below
+broadcom-wl
 btrfs-progs
 clonezilla
 cloud-init
@@ -203,7 +203,7 @@ network-manager-sstp
 # Hardware - Other
 # ================
 # xf86-input-mtrack-git # conflicts with xorg-drivers
-broadcom-wl-dkms
+# broadcom-wl-dkms # Using broadcom instead
 # b43-firmware
 rtl8723bu-git-dkms
 rtl8812au-dkms-git
