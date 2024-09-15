@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## REBORNOS ISO `2024.09.15` CHANGELOG
+
+### For users
+
+- Update from upstream, bringing new features and bug-fixes.
+
+### For developers
+
+- Update the local repo with the newest installer, and the newest welcome app.
+- Update the local repo with the rebuilt `yay`.
+
 ## REBORNOS ISO `2024.08.03` CHANGELOG
 
 ### For users
