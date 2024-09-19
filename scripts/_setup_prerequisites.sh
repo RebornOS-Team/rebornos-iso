@@ -13,6 +13,7 @@ ISO_SYNC_DIRECTORY="$ISO_CONFIGURATION_DIRECTORY/airootfs/var/lib/pacman/sync"
 echo "Project Directory: $PROJECT_DIRECTORY"
 echo "Script Directory: $SCRIPT_DIRECTORY"
 
+echo ""
 read -t 5 -p "Do you want to skip upgrading your system? (The default option will be selected in 5 seconds) [y/N] : " -n 1 -r
 echo ""
 if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
@@ -24,6 +25,7 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     set +o xtrace
 fi
 
+echo ""
 read -t 5 -p "Do you want to skip installing prerequisites? (The default option will be selected in 5 seconds) [y/N] : " -n 1 -r
 echo ""
 if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
@@ -35,6 +37,7 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     set +o xtrace
 fi
 
+echo ""
 read -t 5 -p "Do you want to skip refreshing mirrors? (The default option will be selected in 5 seconds) [y/N] : " -n 1 -r
 echo ""
 if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
