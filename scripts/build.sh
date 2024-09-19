@@ -10,4 +10,4 @@ set -o xtrace
 sudo chmod -R +x "$PROJECT_DIRECTORY/scripts"
 set +o xtrace
 
-"$SCRIPT_DIRECTORY/_build_inner.sh" 2>&1 | tee -a "$PROJECT_DIRECTORY/output.log"
+"$SCRIPT_DIRECTORY/_build_inner.sh" 2>&1 | tee "$PROJECT_DIRECTORY/output.log"
