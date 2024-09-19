@@ -1,10 +1,13 @@
 # CHANGELOG
 
-## REBORNOS ISO `2024.09.15` CHANGELOG
+## REBORNOS ISO `2024.09.18` CHANGELOG
 
 ### For users
 
-- Update from upstream, bringing new features and bug-fixes.
+- Update ISO and installer from upstream, bringing new features and bug-fixes.
+- Update installer package lists.
+- Update packages. 
+- Refreshing mirrors pushes working up-to-date mirrors to the top.
 
 ### For developers
 
