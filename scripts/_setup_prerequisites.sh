@@ -24,15 +24,16 @@ if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
     set +o xtrace
 fi
 
+read -t 5 -p "Do you want to skip installing prerequisites? (The default option will be selected in 5 seconds) [y/N] : " -n 1 -r
 echo ""
-echo "Installing prerequisites if needed. Ignore any warnings..."
-echo ""
-set -o xtrace
-sudo pacman -S --noconfirm archlinux-keyring rebornos-keyring
-sudo pacman -S --noconfirm --needed archiso refresh-mirrors # wget rsync git git-lfs
-# git lfs install
-# git lfs pull
-set +o xtrace
+if [ "$REPLY" != "Y" ] && [ "$REPLY" != "y" ]; then
+    set -o xtrace
+    sudo pacman -S --noconfirm archlinux-keyring rebornos-keyring
+    sudo pacman -S --noconfirm --needed archiso refresh-mirrors # wget rsync git git-lfs
+    # git lfs install
+    # git lfs pull
+    set +o xtrace
+fi
 
 read -t 5 -p "Do you want to skip refreshing mirrors? (The default option will be selected in 5 seconds) [y/N] : " -n 1 -r
 echo ""
