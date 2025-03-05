@@ -275,10 +275,6 @@ btrfs-progs
 # ======================
 # xfs-tools
 
-# Rescue - Storage - ReiserFS
-# ===========================
-reiserfsprogs
-
 # Rescue - Storage - F2FS
 # =======================
 f2fs-tools
