@@ -360,8 +360,8 @@ mesa-vdpau
 # -----------------
 # Graphics - NVIDIA
 # -----------------
-nvidia
-# nvidia-lts
+nvidia-open
+# nvidia-open-lts
 nvidia-utils
 # lib32-nvidia-utils
 
