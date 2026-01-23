@@ -354,7 +354,7 @@ numlockx
 mesa
 mesa-utils
 # lib32-mesa
-mesa-vdpau
+# mesa-vdpau
 # lib32-mesa-vdpau
 
 # -----------------
